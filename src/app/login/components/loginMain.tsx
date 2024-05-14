@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 
 export const LoginMain: NextPage = () => {
     return (
@@ -78,10 +79,12 @@ export const LoginMain: NextPage = () => {
                         className="w-[0.875rem] relative text-[0.938rem] tracking-[-0.05em] font-inter text-silver text-left inline-block z-[1]">
                         ㅣ
                     </div>
+
                     <div
                         className="relative text-[0.938rem] tracking-[-0.05em] font-inter text-silver text-left inline-block min-w-[3.313rem] z-[1]">
-                        회원가입
+                        <Link href={"/signup"}>회원가입</Link>
                     </div>
+
                 </div>
             </div>
         </form>

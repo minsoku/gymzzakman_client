@@ -91,7 +91,7 @@ export const FrameComponent = () => {
                         />
                     </div>
                     <button
-                        className="bg-gray-500 hover:bg-main h-full w-[11.438rem] [outline:none] absolute top-[0rem] bottom-[0rem] left-[37.5rem] rounded-2xl box-border flex flex-row items-start justify-start py-[2.187rem] px-[3.5rem] font-inter font-medium text-[1.25rem] text-white z-[3] border-[1px] border-solid border-lightgray-100"
+                        className="bg-gray-500 hover:bg-main h-full w-[11.438rem] [outline:none] absolute top-[0rem] bottom-[0rem] left-[37.5rem] rounded-2xl box-border flex flex-row items-start justify-start py-[2.187rem] px-[3rem] font-inter font-medium text-[1.25rem] text-white z-[3] border-[1px] border-solid border-lightgray-100 justify-center"
                     >인증요청</button>
                     <div
                         className="absolute top-[2.188rem] left-[0rem] tracking-[-0.05em] font-medium inline-block w-[4.438rem] z-[1] mq450:text-[1rem]">

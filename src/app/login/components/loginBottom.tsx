@@ -1,10 +1,5 @@
 import type { NextPage } from "next";
-import { useCallback } from "react";
-
 export const LoginBottom: NextPage = () => {
-    const onText17Click = useCallback(() => {
-        // Please sync "키워드설정-시작화면" to the project
-    }, []);
 
     return (
         <section
@@ -34,7 +29,6 @@ export const LoginBottom: NextPage = () => {
                     className="absolute h-[calc(100%_-_1px)] top-[0rem] bottom-[0.063rem] left-[1.063rem] rounded-181xl bg-white w-[17.119rem] z-[1] rounded-full"/>
                 <h2
                     className="m-0 absolute top-[0.006rem] left-[0rem] tracking-[-0.02em] leading-[6.25rem] font-semibold font-inherit flex items-center justify-center w-full h-full cursor-pointer z-[2] mq450:text-[1.25rem] mq450:leading-[5rem] text-black"
-                    // onClick={onText17Click}
                 >
                     관심사 설정하러 가기
                 </h2>
