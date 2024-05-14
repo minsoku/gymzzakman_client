@@ -168,7 +168,7 @@ export const FrameComponent = () => {
                                     <img
                                         className="w-[0.563rem] h-[0.938rem] relative object-contain z-[3]"
                                         alt=""
-                                        src="/vector-1.svg"
+                                        src="/Vector.png"
                                     />
                                 </div>
                             </div>
@@ -196,7 +196,7 @@ export const FrameComponent = () => {
                                     <img
                                         className="w-[0.563rem] h-[0.938rem] relative object-contain z-[3]"
                                         alt=""
-                                        src="/vector-2.svg"
+                                        src="/Vector.png"
                                     />
                                 </div>
                             </div>
@@ -224,7 +224,7 @@ export const FrameComponent = () => {
                                     <img
                                         className="w-[0.563rem] h-[0.938rem] relative object-contain z-[3]"
                                         alt=""
-                                        src="/vector-3.svg"
+                                        src="/Vector.png"
                                     />
                                 </div>
                             </div>
@@ -252,7 +252,7 @@ export const FrameComponent = () => {
                                     <img
                                         className="w-[0.563rem] h-[0.938rem] relative object-contain z-[3]"
                                         alt=""
-                                        src="/vector-4.svg"
+                                        src="/Vector.png"
                                     />
                                 </div>
                             </div>

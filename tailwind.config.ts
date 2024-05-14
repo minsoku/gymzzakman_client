@@ -13,6 +13,10 @@ const config: Config = {
   },
   theme: {
     extend: {
+      fill: {
+        'custom-gray': '#9A9A9A',
+        'custom-hover': '#FFFFFF',
+      },
       colors: {
         "main": '#4AADFF',
         "background": '#F7F7F7',
