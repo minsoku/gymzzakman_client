@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import {useCallback} from "react";
 import KakaoMap from "@/app/search/components/kakaoMap";
 
 export const AA = () => {
@@ -28,37 +28,32 @@ export const AA = () => {
                     검색하기
                 </b>
             </button>
-            <div
-                className="self-stretch flex flex-col items-start justify-start gap-[1.25rem] max-w-full text-center text-[1.25rem] text-gainsboro-200">
+            <div className="flex-col items-start justify-start gap-[1.25rem] w-full border-2">
                 <div
-                    className="self-stretch flex flex-row items-start justify-center py-[0rem] px-[1.25rem] box-border max-w-full">
+                    className="self-stretch flex flex-col items-start justify-start text-center text-[1.25rem] text-gainsboro-200">
                     <div
-                        className="w-[50.813rem] flex flex-row items-start justify-between gap-[1.25rem] max-w-full mq450:flex-wrap">
+                        className="w-full h-[80px]  flex flex-row items-start max-w-full mq450:flex-wrap">
                         <div
-                            className="h-[1.938rem] w-[2.875rem] relative tracking-[-0.05em] font-semibold text-black inline-block shrink-0 z-[1] mq450:text-[1rem]">
+                            className="h-full w-[33.3%] relative tracking-[-0.05em] font-semibold text-black inline-block shrink-0 z-[1] mq450:text-[1rem] content-center border-2 border-b-black">
                             위치
                         </div>
                         <div
-                            className="h-[1.938rem] w-[2.938rem] relative tracking-[-0.05em] font-semibold text-left inline-block shrink-0 cursor-pointer z-[1] mq450:text-[1rem]"
-                        >
+                            className="h-full w-[33.3%] relative tracking-[-0.05em] font-semibold inline-block shrink-0 cursor-pointer z-[1] mq450:text-[1rem] content-center border-2 border-b-black">
                             가격
                         </div>
                         <div
-                            className="h-[1.938rem] w-[4.875rem] relative tracking-[-0.05em] font-semibold inline-block shrink-0 min-w-[4.875rem] cursor-pointer z-[1] mq450:text-[1rem]"
-                        >
+                            className="h-full w-[33.4%] relative tracking-[-0.05em] font-semibold inline-block shrink-0 cursor-pointer z-[1] mq450:text-[1rem] content-center border-2 border-b-black">
                             운동종목
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="flex-col items-start justify-start gap-[1.25rem] w-full border-2">
                 <div
                     className="relative tracking-[-0.05em] z-[1] ml-14 text-[16px] pt-10 pb-2">
                     지도에서 찾기
                 </div>
                 <div className="self-stretch items-end justify-start gap-[1.875rem] max-w-full">
                     <div className="self-stretch relative">
-                        <KakaoMap />
+                        <KakaoMap/>
                     </div>
                     <div
                         className="w-full items-start box-border p-5">

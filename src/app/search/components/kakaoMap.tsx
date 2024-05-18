@@ -10,12 +10,16 @@ const KakaoMap = () => {
         document.head.appendChild(script);
 
         script.onload = () => {
+            // @ts-ignore
             kakao.maps.load(() => {
+                // @ts-ignore
                 const mapContainer = document.getElementById('map'), // 지도를 표시할 div
                     mapOption = {
+                        // @ts-ignore
                         center: new window.kakao.maps.LatLng(37.44779290, 126.64925790), // 지도의 중심좌표
                         level: 5 // 지도의 확대 레벨
                     };
+                // @ts-ignore
                 const map = new window.kakao.maps.Map(mapContainer, mapOption);
             });
         };
