@@ -18,7 +18,7 @@ export default function Home() {
             className="text-[#9A9A9A] w-full h-full relative bg-whitesmoke overflow-hidden flex flex-row items-start justify-start gap-[0.625rem] leading-[normal] tracking-[normal] text-center text-[1.25rem] font-inter mq675:h-auto">
             <div className="h-[64rem] w-[90.375rem] relative bg-whitesmoke hidden max-w-full"/>
             <main
-                className="h-[68.225rem] w-full relative bg-[url('/home-background.png')] bg-cover bg-no-repeat bg-[top] shrink-0 [debug_commit:1de1738] max-w-[130%] z-[1] text-left text-[0.75rem] text-silver font-inter mq675:h-auto mq675:min-h-[1091.6]">
+                className="h-[68.225rem] w-full relative bg-[url('https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/home-background.png')] bg-cover bg-no-repeat bg-[top] shrink-0 [debug_commit:1de1738] max-w-[130%] z-[1] text-left text-[0.75rem] text-silver font-inter mq675:h-auto mq675:min-h-[1091.6]">
                 <MainButton/>
                 <h1 className="text-black m-0 absolute top-[21.688rem] left-[35.188rem] text-[4.375rem] tracking-[-0.02em] leading-[5.938rem] inline-block italic font-bold font-inherit text-darkslategray text-center w-[49.531rem] h-[14.275rem] z-[2] mq450:text-[2.625rem] mq450:leading-[3.563rem] mq750:text-[3.5rem] mq750:leading-[4.75rem]">
                     <p className="m-0">원하는 운동정보</p>
@@ -29,7 +29,7 @@ export default function Home() {
                         className="absolute top-[2.313rem] left-[42.813rem] w-[4.75rem] h-[1.563rem] overflow-hidden z-[2]"
                         loading="lazy"
                         alt=""
-                        src="/main-logo.png"
+                        src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/main-logo.png"
                     />
                 </section>
                 <Link href={"/login"}>

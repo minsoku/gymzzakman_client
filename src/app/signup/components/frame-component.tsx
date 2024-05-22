@@ -168,7 +168,7 @@ export const FrameComponent = () => {
                                     <img
                                         className="w-[0.563rem] h-[0.938rem] relative object-contain z-[3]"
                                         alt=""
-                                        src="/Vector.png"
+                                        src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/Vector.png"
                                     />
                                 </div>
                             </div>
@@ -196,7 +196,7 @@ export const FrameComponent = () => {
                                     <img
                                         className="w-[0.563rem] h-[0.938rem] relative object-contain z-[3]"
                                         alt=""
-                                        src="/Vector.png"
+                                        src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/Vector.png"
                                     />
                                 </div>
                             </div>
@@ -224,7 +224,7 @@ export const FrameComponent = () => {
                                     <img
                                         className="w-[0.563rem] h-[0.938rem] relative object-contain z-[3]"
                                         alt=""
-                                        src="/Vector.png"
+                                        src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/Vector.png"
                                     />
                                 </div>
                             </div>
@@ -252,7 +252,7 @@ export const FrameComponent = () => {
                                     <img
                                         className="w-[0.563rem] h-[0.938rem] relative object-contain z-[3]"
                                         alt=""
-                                        src="/Vector.png"
+                                        src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/Vector.png"
                                     />
                                 </div>
                             </div>

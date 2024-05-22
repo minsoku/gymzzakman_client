@@ -17,18 +17,20 @@ export const Header = () => {
                     className="h-[2.5rem] w-[3.188rem] relative overflow-hidden shrink-0"
                     loading="lazy"
                     alt=""
-                    src="/logo.png"
+                    src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/logo.png"
                 />
             </Link>
             <nav
                 className="m-0 w-[27.375rem] flex flex-col items-start justify-start pt-[0.687rem] px-[0rem] pb-[0rem] box-border max-w-full mq700:hidden">
                 <nav
                     className="m-0 self-stretch flex flex-row items-start justify-between gap-[1.25rem] text-left text-[0.938rem] text-black font-inter">
-                    <div
-                        className="relative tracking-[-0.1em] inline-block min-w-[4.125rem] whitespace-nowrap cursor-pointer"
-                    >
-                        최저가 검색
-                    </div>
+                    <Link href={"/search"}>
+                        <div
+                            className={"relative tracking-[-0.1em] inline-block min-w-[4.125rem] whitespace-nowrap cursor-pointer" + (pathname === "/search" ? " text-main" : "")}
+                        >
+                            최저가 검색
+                        </div>
+                    </Link>
                     <div
                         className="relative tracking-[-0.1em] inline-block min-w-[4.938rem] whitespace-nowrap cursor-pointer"
                     >
@@ -45,7 +47,8 @@ export const Header = () => {
                         마이페이지
                     </div>
                     <Link href={"/login"}>
-                        <div className={"relative tracking-[-0.1em] inline-block min-w-[2.438rem]" + (pathname === "/login" ? " text-main" : "")}
+                        <div
+                            className={"relative tracking-[-0.1em] inline-block min-w-[2.438rem]" + (pathname === "/login" ? " text-main" : "")}
                         >
                             로그인
                         </div>

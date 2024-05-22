@@ -37,19 +37,19 @@ export const LoginBottom: NextPage = () => {
                 <img
                     className="absolute top-[0rem] left-[0rem] w-full h-full object-contain z-[3]"
                     alt=""
-                    src="/login-footer.png"
+                    src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/login-footer.png"
                 />
                 <img
                     className="absolute top-[7.381rem] left-[18.194rem] w-[6.3rem] h-[6.088rem] object-contain z-[4]"
                     loading="lazy"
                     alt=""
-                    src="/login-footer-top.png"
+                    src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/login-footer-top.png"
                 />
                 <img
                     className="absolute top-[15.069rem] left-[2.756rem] w-[6.088rem] h-[6.3rem] object-contain z-[4]"
                     loading="lazy"
                     alt=""
-                    src="/login-footer-bottom.png"
+                    src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/login-footer-bottom.png"
                 />
             </div>
         </section>
