@@ -1,9 +1,61 @@
-import type { NextPage } from "next";
+"use client"
+
+import type {NextPage} from "next";
 import Link from "next/link";
+import {signIn} from "next-auth/react";
+import React, {ChangeEventHandler, FormEventHandler, useState} from "react";
+import {useRouter} from "next/navigation";
+import errorCodes from "@/app/const/errorcodes";
 
 export const LoginMain: NextPage = () => {
+    const router = useRouter();
+    const [password, setPassword] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+    const onChangeEmail: ChangeEventHandler<HTMLInputElement> = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEmail(e.target.value);
+        setErrorMessage('');
+    }
+
+    const onChangePassword: ChangeEventHandler<HTMLInputElement> = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPassword(e.target.value);
+        setErrorMessage('');
+    }
+    const onSubmit: FormEventHandler<HTMLFormElement> = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const username = e.currentTarget.email.value;
+        const password = e.currentTarget.password.value
+        let reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/
+        if (!username || !password) {
+            setErrorMessage("아이디 또는 비밀번호를 입력해주세요.");
+            return;
+        }
+        if (!reg.test(password)) {
+            setErrorMessage("비밀번호는 영문, 숫자, 특수문자를 포함한 8자 이상 15자 이하로 입력해주세요.");
+            return;
+        }
+        try {
+            await signIn("credentials", {
+                username,
+                password,
+                redirect: false,
+            }).then((res) => {
+                if (!res?.error && res?.ok) {
+                    router.push("/");
+                } else if (res?.error) {
+                    setErrorMessage(errorCodes[res.error]);
+                    setEmail("");
+                    setPassword("");
+                }
+            })
+        } catch (e) {
+            console.log(e);
+        }
+    };
     return (
         <form
+            onSubmit={onSubmit}
             className="m-0 w-[42.938rem] flex flex-col items-start justify-start gap-[2.706rem] max-w-full mq700:gap-[1.375rem]">
             <div className="self-stretch flex flex-col items-start justify-start gap-[1.437rem] max-w-full">
                 <div className="self-stretch flex flex-col items-start justify-start gap-[1.125rem] max-w-full">
@@ -17,9 +69,12 @@ export const LoginMain: NextPage = () => {
                             src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/login-id.png"
                         />
                         <input
-                            className="w-[6.375rem] [border:none] [outline:none] font-semibold font-inter text-[1.25rem] bg-[transparent] h-[1.5rem] relative tracking-[-0.05em] text-gainsboro text-left inline-block p-0 z-[2] mq450:text-[1rem]"
+                            className="w-full [border:none] [outline:none] font-semibold font-inter text-[1.25rem] bg-[transparent] h-[1.5rem] relative tracking-[-0.05em] text-gainsboro text-left inline-block p-0 z-[2] mq450:text-[1rem]"
                             placeholder="아이디 입력"
-                            type="text"
+                            name="email"
+                            type="email"
+                            value={email}
+                            onChange={onChangeEmail}
                         />
                     </div>
                     <div
@@ -32,20 +87,28 @@ export const LoginMain: NextPage = () => {
                             src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/login-password.png"
                         />
                         <input
-                            className="w-[7.438rem] [border:none] [outline:none] font-semibold font-inter text-[1.25rem] bg-[transparent] h-[1.5rem] relative tracking-[-0.05em] text-gainsboro text-left inline-block p-0 z-[2] mq450:text-[1rem]"
+                            className="w-full [border:none] [outline:none] font-semibold font-inter text-[1.25rem] bg-[transparent] h-[1.5rem] relative tracking-[-0.05em] text-gainsboro text-left inline-block p-0 z-[2] mq450:text-[1rem]"
                             placeholder="비밀번호 입력"
-                            type="text"
+                            name="password"
+                            type="password"
+                            value={password}
+                            onChange={onChangePassword}
                         />
                     </div>
                 </div>
+                {errorMessage &&
+                    <div className="text-red-500 text-xs font-semibold">
+                        {errorMessage}
+                    </div>
+                }
                 <div className="w-[14.5rem] flex flex-row items-start justify-start py-[0rem] px-[0.5rem] box-border">
                     <div className="flex-1 flex flex-row items-start justify-start gap-[0.5rem]">
-                        <input type="checkbox" />
+                        <input type="checkbox"/>
                         <div
                             className="flex-1 relative text-[0.938rem] tracking-[-0.05em] font-medium font-inter text-black text-left z-[1]">
                             아이디 저장
                         </div>
-                        <input type="checkbox" />
+                        <input type="checkbox"/>
                         <div
                             className="flex-1 relative text-[0.938rem] tracking-[-0.05em] font-medium font-inter text-black text-left z-[1]">
                             자동 로그인

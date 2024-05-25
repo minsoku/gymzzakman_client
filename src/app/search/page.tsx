@@ -14,7 +14,7 @@ export default function Page() {
                     </div>
                 </div>
                 <AA />
-                <BB />
+                {/*<BB />*/}
             </main>
         </div>
     );

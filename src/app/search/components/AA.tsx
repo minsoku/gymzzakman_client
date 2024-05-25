@@ -7,7 +7,7 @@ import {Price} from "@/app/search/components/price";
 import {Exercise} from "@/app/search/components/exercise";
 
 export const AA = () => {
-    const [type, setType] = useState<string>("price");
+    const [type, setType] = useState<string>("location");
 
     const handleType = useCallback((type: string) => {
         setType(type);

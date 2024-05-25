@@ -20,13 +20,8 @@ export default function RootLayout({children}: Readonly<{
 }>) {
     return (
         <html lang="en">
-            {/*<Head></Head>*/}
             <Script type="text/javascript"
                     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ea22cc7b4726298c76cf9fc0c40e46bc&autoload=false"/>
-            {/*<Script*/}
-            {/*    strategy="beforeInteractive"*/}
-            {/*    src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_MAP_KEY}&autoload=false`}*/}
-            {/*/>*/}
             <body className={inter.className}>
                 <Header/>
                 {children}
