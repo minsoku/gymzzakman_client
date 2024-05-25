@@ -3,7 +3,7 @@
 import type {NextPage} from "next";
 import Link from "next/link";
 import {signIn} from "next-auth/react";
-import React, {ChangeEventHandler, FormEventHandler, useState} from "react";
+import React, {ChangeEventHandler, FormEventHandler, useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
 import errorCodes from "@/app/const/errorcodes";
 
@@ -12,6 +12,15 @@ export const LoginMain: NextPage = () => {
     const [password, setPassword] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const [saveId, setSaveId] = useState<string>("");
+    const [idChecked, setIdChecked] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (localStorage.getItem("saveId")) {
+            setEmail(localStorage.getItem("saveId") || "");
+            setIdChecked(true);
+        }
+    }, []);
 
     const onChangeEmail: ChangeEventHandler<HTMLInputElement> = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
@@ -21,6 +30,13 @@ export const LoginMain: NextPage = () => {
     const onChangePassword: ChangeEventHandler<HTMLInputElement> = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
         setErrorMessage('');
+    }
+
+    const onChangeSaveId: ChangeEventHandler<HTMLInputElement> = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setIdChecked(e.target.checked);
+        if (!e.target.checked) {
+            localStorage.removeItem("saveId");
+        }
     }
     const onSubmit: FormEventHandler<HTMLFormElement> = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -42,6 +58,9 @@ export const LoginMain: NextPage = () => {
                 redirect: false,
             }).then((res) => {
                 if (!res?.error && res?.ok) {
+                    if (idChecked){
+                        localStorage.setItem("saveId", username);
+                    }
                     router.push("/");
                 } else if (res?.error) {
                     setErrorMessage(errorCodes[res.error]);
@@ -103,15 +122,10 @@ export const LoginMain: NextPage = () => {
                 }
                 <div className="w-[14.5rem] flex flex-row items-start justify-start py-[0rem] px-[0.5rem] box-border">
                     <div className="flex-1 flex flex-row items-start justify-start gap-[0.5rem]">
-                        <input type="checkbox"/>
+                        <input type="checkbox" onChange={onChangeSaveId} checked={idChecked}/>
                         <div
                             className="flex-1 relative text-[0.938rem] tracking-[-0.05em] font-medium font-inter text-black text-left z-[1]">
                             아이디 저장
-                        </div>
-                        <input type="checkbox"/>
-                        <div
-                            className="flex-1 relative text-[0.938rem] tracking-[-0.05em] font-medium font-inter text-black text-left z-[1]">
-                            자동 로그인
                         </div>
                     </div>
                 </div>
