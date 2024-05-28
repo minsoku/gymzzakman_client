@@ -2,13 +2,21 @@
 
 import {usePathname} from "next/navigation";
 import Link from "next/link";
+import {signOut, useSession} from "next-auth/react";
+// import {cookies} from "next/headers";
 
 
 export const Header = () => {
+    const session = useSession();
     const pathname = usePathname();
     if (pathname === "/") {
         return null;
     }
+
+    const signout = () => {
+        signOut();
+    }
+
     return (
         <header
             className="self-stretch flex flex-row items-start justify-between py-[1.562rem] px-[5rem] box-border max-w-full gap-[1.25rem] mq975:pl-[2.5rem] mq975:pr-[2.5rem] mq975:box-border bg-white">
@@ -46,13 +54,22 @@ export const Header = () => {
                     <div className="relative tracking-[-0.1em] inline-block min-w-[3.938rem]">
                         마이페이지
                     </div>
-                    <Link href={"/login"}>
-                        <div
-                            className={"relative tracking-[-0.1em] inline-block min-w-[2.438rem]" + (pathname === "/login" ? " text-main" : "")}
-                        >
-                            로그인
-                        </div>
-                    </Link>
+                    {
+                        session.data ?
+                            <div
+                                className={"cursor-pointer relative tracking-[-0.1em] inline-block min-w-[2.438rem]" + (pathname === "/login" ? " text-main" : "")}
+                                onClick={signout}
+                            >
+                                로그아웃
+                            </div> :
+                            <Link href={"/login"}>
+                                <div
+                                    className={"relative tracking-[-0.1em] inline-block min-w-[2.438rem]" + (pathname === "/login" ? " text-main" : "")}
+                                >
+                                    로그인
+                                </div>
+                            </Link>
+                    }
                 </nav>
             </nav>
         </header>

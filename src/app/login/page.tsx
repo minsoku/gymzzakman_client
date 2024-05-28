@@ -1,7 +1,15 @@
+"use client";
+
 import {LoginMain} from "@/app/login/components/loginMain";
 import {LoginBottom} from "@/app/login/components/loginBottom";
+import {useSession} from "next-auth/react";
+import {redirect} from "next/navigation";
 
 export default function Page() {
+    const session = useSession();
+    if (session.data) {
+        redirect("/");
+    }
     return (
         <div
             className="w-full relative bg-white overflow-hidden flex flex-col items-start justify-start leading-[normal] tracking-[normal]">

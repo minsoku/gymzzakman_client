@@ -4,6 +4,20 @@ import {cookies} from "next/headers";
 import {responseStatus} from "@/app/_helper/responseStatus";
 
 export const authOptions: NextAuthOptions = {
+    callbacks: {
+        session({session}) {
+            return session;
+        }
+    },
+    events: {
+        signOut: (message) => {
+            cookies().delete("connect.access");
+            cookies().delete("connect.refresh");
+        }
+    },
+    pages: {
+        signIn: '/login'
+    },
     providers: [
         CredentialsProvider({
             name: "Credentials",
@@ -53,17 +67,9 @@ export const authOptions: NextAuthOptions = {
         })
     ],
     secret: process.env.NEXTAUTH_SECRET,
-    pages: {
-        signIn: '/login' // 올바른 경로를 설정하세요
-    },
     session: {
         strategy: 'jwt',
         maxAge: 30 * 60, // 30분
-    },
-    callbacks: {
-        session({session}) {
-            return session;
-        }
     }
 }
 

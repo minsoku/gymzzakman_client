@@ -1,18 +1,7 @@
-import {useCallback} from "react";
 import {MainButton} from "@/app/components/mainButton";
 import Link from "next/link";
 
 export default function Home() {
-    const onText1Click = useCallback(() => {
-        // 로그인 페이지로 이동하는 코드 작성
-
-    }, []);
-
-    const onText3Click = useCallback(() => {
-        // 회원가입 페이지로 이동하는 코드 작성
-
-    }, []);
-
     return (
         <div
             className="text-[#9A9A9A] w-full h-full relative bg-whitesmoke overflow-hidden flex flex-row items-start justify-start gap-[0.625rem] leading-[normal] tracking-[normal] text-center text-[1.25rem] font-inter mq675:h-auto">

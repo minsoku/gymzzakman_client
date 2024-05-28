@@ -4,7 +4,7 @@ import type {NextPage} from "next";
 import Link from "next/link";
 import {signIn} from "next-auth/react";
 import React, {ChangeEventHandler, FormEventHandler, useEffect, useState} from "react";
-import {useRouter} from "next/navigation";
+import {redirect, useRouter} from "next/navigation";
 import errorCodes from "@/app/const/errorcodes";
 
 export const LoginMain: NextPage = () => {
@@ -22,13 +22,14 @@ export const LoginMain: NextPage = () => {
         }
     }, []);
 
-    const onChangeEmail: ChangeEventHandler<HTMLInputElement> = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
-        setErrorMessage('');
-    }
+    const onChangeField: ChangeEventHandler<HTMLInputElement> = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        if (name === 'email') {
+            setEmail(value);
+        } else if (name === 'password') {
+            setPassword(value);
+        }
 
-    const onChangePassword: ChangeEventHandler<HTMLInputElement> = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
         setErrorMessage('');
     }
 
@@ -61,7 +62,7 @@ export const LoginMain: NextPage = () => {
                     if (idChecked){
                         localStorage.setItem("saveId", username);
                     }
-                    router.push("/");
+                    redirect('/');
                 } else if (res?.error) {
                     setErrorMessage(errorCodes[res.error]);
                     setEmail("");
@@ -93,7 +94,7 @@ export const LoginMain: NextPage = () => {
                             name="email"
                             type="email"
                             value={email}
-                            onChange={onChangeEmail}
+                            onChange={onChangeField}
                         />
                     </div>
                     <div
@@ -111,7 +112,7 @@ export const LoginMain: NextPage = () => {
                             name="password"
                             type="password"
                             value={password}
-                            onChange={onChangePassword}
+                            onChange={onChangeField}
                         />
                     </div>
                 </div>
