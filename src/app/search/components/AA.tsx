@@ -11,7 +11,7 @@ export const AA = () => {
 
     const handleType = useCallback((type: string) => {
         setType(type);
-    }, [type]);
+    }, []);
 
     return (
         <section className="w-[71.938rem] flex flex-row flex-wrap items-start justify-center gap-[0.625rem] max-w-full">

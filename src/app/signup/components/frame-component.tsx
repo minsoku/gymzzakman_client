@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export const FrameComponent = () => {
     return (
         <div
@@ -165,7 +167,7 @@ export const FrameComponent = () => {
                                 </div>
                                 <div
                                     className="flex flex-col items-start justify-start pt-[0.312rem] px-[0rem] pb-[0rem] ml-[-1.313rem]">
-                                    <img
+                                    <Image
                                         className="w-[0.563rem] h-[0.938rem] relative object-contain z-[3]"
                                         alt=""
                                         src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/Vector.png"
@@ -193,7 +195,7 @@ export const FrameComponent = () => {
                                 </div>
                                 <div
                                     className="flex flex-col items-start justify-start pt-[0.312rem] px-[0rem] pb-[0rem] ml-[-1.313rem]">
-                                    <img
+                                    <Image
                                         className="w-[0.563rem] h-[0.938rem] relative object-contain z-[3]"
                                         alt=""
                                         src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/Vector.png"
@@ -221,7 +223,7 @@ export const FrameComponent = () => {
                                 </div>
                                 <div
                                     className="flex flex-col items-start justify-start pt-[0.312rem] px-[0rem] pb-[0rem] ml-[-1.313rem]">
-                                    <img
+                                    <Image
                                         className="w-[0.563rem] h-[0.938rem] relative object-contain z-[3]"
                                         alt=""
                                         src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/Vector.png"
@@ -249,7 +251,7 @@ export const FrameComponent = () => {
                                 </div>
                                 <div
                                     className="flex flex-col items-start justify-start pt-[0.312rem] px-[0rem] pb-[0rem] ml-[-1.313rem]">
-                                    <img
+                                    <Image
                                         className="w-[0.563rem] h-[0.938rem] relative object-contain z-[3]"
                                         alt=""
                                         src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/Vector.png"

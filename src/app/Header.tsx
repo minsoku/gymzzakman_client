@@ -3,6 +3,7 @@
 import {usePathname} from "next/navigation";
 import Link from "next/link";
 import {signOut, useSession} from "next-auth/react";
+import Image from "next/image";
 // import {cookies} from "next/headers";
 
 
@@ -21,7 +22,7 @@ export const Header = () => {
         <header
             className="self-stretch flex flex-row items-start justify-between py-[1.562rem] px-[5rem] box-border max-w-full gap-[1.25rem] mq975:pl-[2.5rem] mq975:pr-[2.5rem] mq975:box-border bg-white">
             <Link href={"/"}>
-                <img
+                <Image
                     className="h-[2.5rem] w-[3.188rem] relative overflow-hidden shrink-0"
                     loading="lazy"
                     alt=""

@@ -1,12 +1,15 @@
+import Image from "next/image";
+
 export const BB = () => {
     return (
         <section
             className="w-[72rem] flex flex-col items-end justify-start pt-[0rem] px-[0rem] pb-[0.25rem] box-border gap-[1.875rem] max-w-full text-left text-[0.938rem] text-black font-inter">
             <div
                 className="self-stretch rounded-3xs bg-white flex flex-row flex-wrap items-end justify-start pt-[2.062rem] pb-[2.25rem] pr-[1.75rem] pl-[2.125rem] box-border max-w-full [row-gap:20px] z-[1]">
-                <img
+                <Image
                     className="[border:none] bg-gainsboro-300 h-[8rem] w-[14.375rem] [outline:none] relative rounded-3xs z-[1]"
                     src={""}
+                    alt={""}
                 />
                 <div
                     className="flex-1 flex flex-col items-end justify-start gap-[2.187rem] min-w-[35rem] max-w-full ml-[-0.188rem] mq750:min-w-full mq1050:ml-0 mq450:gap-[1.063rem]">

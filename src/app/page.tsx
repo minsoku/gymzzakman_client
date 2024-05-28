@@ -1,5 +1,6 @@
 import {MainButton} from "@/app/components/mainButton";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
     return (
@@ -14,7 +15,7 @@ export default function Home() {
                     <p className="m-0">이젠 간편하게 검색!</p>
                 </h1>
                 <section className="absolute top-[1.438rem] left-[14.75rem] w-[90.375rem] h-[64rem]">
-                    <img
+                    <Image
                         className="absolute top-[2.313rem] left-[42.813rem] w-[4.75rem] h-[1.563rem] overflow-hidden z-[2]"
                         loading="lazy"
                         alt=""

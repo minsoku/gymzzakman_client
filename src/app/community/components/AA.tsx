@@ -1,6 +1,4 @@
-import type { NextPage } from "next";
-
-export const AA: NextPage = () => {
+export const AA = () => {
     return (
         <div
             className="self-stretch flex flex-col items-end justify-start pt-[0rem] px-[0rem] pb-[1.375rem] box-border gap-[4.687rem] max-w-full text-left text-[2.813rem] text-black font-inter mq725:gap-[1.188rem] mq1025:gap-[2.313rem]">

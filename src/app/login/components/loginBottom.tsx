@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Image from "next/image";
 export const LoginBottom: NextPage = () => {
 
     return (
@@ -34,18 +35,18 @@ export const LoginBottom: NextPage = () => {
                 </h2>
             </div>
             <div className="w-[31.55rem] h-[24.088rem] absolute !m-[0] top-[-6.069rem] right-[9.831rem]">
-                <img
+                <Image
                     className="absolute top-[0rem] left-[0rem] w-full h-full object-contain z-[3]"
                     alt=""
                     src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/login-footer.png"
                 />
-                <img
+                <Image
                     className="absolute top-[7.381rem] left-[18.194rem] w-[6.3rem] h-[6.088rem] object-contain z-[4]"
                     loading="lazy"
                     alt=""
                     src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/login-footer-top.png"
                 />
-                <img
+                <Image
                     className="absolute top-[15.069rem] left-[2.756rem] w-[6.088rem] h-[6.3rem] object-contain z-[4]"
                     loading="lazy"
                     alt=""
