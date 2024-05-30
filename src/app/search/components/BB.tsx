@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 
 export const BB = () => {
     return (
@@ -6,7 +6,7 @@ export const BB = () => {
             className="w-[72rem] flex flex-col items-end justify-start pt-[0rem] px-[0rem] pb-[0.25rem] box-border gap-[1.875rem] max-w-full text-left text-[0.938rem] text-black font-inter">
             <div
                 className="self-stretch rounded-3xs bg-white flex flex-row flex-wrap items-end justify-start pt-[2.062rem] pb-[2.25rem] pr-[1.75rem] pl-[2.125rem] box-border max-w-full [row-gap:20px] z-[1]">
-                <Image
+                <img
                     className="[border:none] bg-gainsboro-300 h-[8rem] w-[14.375rem] [outline:none] relative rounded-3xs z-[1]"
                     src={""}
                     alt={""}
@@ -64,7 +64,6 @@ export const BB = () => {
                     </div>
                 </div>
             </div>
-
         </section>
     )
 }

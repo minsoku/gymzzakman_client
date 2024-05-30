@@ -6,7 +6,6 @@ import {signIn} from "next-auth/react";
 import React, {ChangeEventHandler, FormEventHandler, useEffect, useState} from "react";
 import {redirect, useRouter} from "next/navigation";
 import errorCodes from "@/app/const/errorcodes";
-import Image from "next/image";
 
 export const LoginMain: NextPage = () => {
     const router = useRouter();
@@ -84,7 +83,7 @@ export const LoginMain: NextPage = () => {
                         className="self-stretch rounded-3xs bg-white box-border flex flex-row items-start justify-start py-[2.062rem] px-[2.125rem] gap-[1.25rem] max-w-full z-[1] border-[1px] border-solid border-lightgray">
                         <div
                             className="h-[5.875rem] w-[42.938rem] relative rounded-3xs bg-white box-border hidden max-w-full border-[1px] border-solid border-lightgray"/>
-                        <Image
+                        <img
                             className="h-[1.5rem] w-[1.5rem] relative overflow-hidden shrink-0 min-h-[1.5rem] z-[2]"
                             alt=""
                             src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/login-id.png"
@@ -102,7 +101,7 @@ export const LoginMain: NextPage = () => {
                         className="self-stretch rounded-3xs bg-white box-border flex flex-row items-start justify-start py-[2.062rem] px-[2.125rem] gap-[1.25rem] max-w-full z-[1] border-[1px] border-solid border-lightgray">
                         <div
                             className="h-[5.875rem] w-[42.938rem] relative rounded-3xs bg-white box-border hidden max-w-full border-[1px] border-solid border-lightgray"/>
-                        <Image
+                        <img
                             className="h-[1.5rem] w-[1.5rem] relative overflow-hidden shrink-0 min-h-[1.5rem] z-[2]"
                             alt=""
                             src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/login-password.png"

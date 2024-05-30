@@ -1,7 +1,13 @@
-import {NextAuthOptions} from "next-auth";
+import {NextAuthOptions, Session} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import {cookies} from "next/headers";
 import {responseStatus} from "@/app/_helper/responseStatus";
+
+interface NewSession extends Session {
+    access: string;
+    refresh: string;
+    image: string;
+}
+
 
 export const authOptions: NextAuthOptions = {
     providers: [
@@ -27,28 +33,11 @@ export const authOptions: NextAuthOptions = {
                 responseStatus(authResponse.status);
 
                 const user = await authResponse.json();
-                if (user?.accessToken && user?.refreshToken) {
-                    cookies().set({
-                        name: "connect.access",
-                        value: user.accessToken,
-                        httpOnly: true,
-                        path: "/",
-                        maxAge: 60 * 30,
-                    });
-                    cookies().set({
-                        name: "connect.refresh",
-                        value: user.refreshToken,
-                        httpOnly: true,
-                        path: "/",
-                        maxAge: 60 * 360,
-                    })
-                }
                 return {
-                    email: user.email,
-                    name: user.name,
-                    image: user.image,
                     ...user,
-                }
+                    accessToken: user.accessToken,
+                    refreshToken: user.refreshToken,
+                };
             }
         })
     ],
@@ -61,8 +50,20 @@ export const authOptions: NextAuthOptions = {
         maxAge: 30 * 60, // 30분
     },
     callbacks: {
-        session({session}) {
-            return session;
+        async jwt({ token, user, session, trigger}) {
+            if (user) {
+                token = {...user};
+            }
+            return token;
+        },
+        session({session, token}) {
+            const newSession: NewSession = {
+                ...session,
+                access: token.accessToken as string,
+                refresh: token.refreshToken as string,
+                image: token.image as string
+            };
+            return newSession;
         },
     }
 }

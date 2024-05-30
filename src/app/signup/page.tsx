@@ -1,6 +1,6 @@
 "use client";
 
-import { FrameComponent } from '@/app/signup/components/frame-component';
+import { SignupMain } from '@/app/signup/components/signupMain';
 import {useSession} from "next-auth/react";
 import {redirect} from "next/navigation";
 export default function Page() {
@@ -26,7 +26,7 @@ export default function Page() {
                 </div>
                 <div
                     className="w-[49.063rem] flex flex-col items-end justify-start gap-[1.687rem] max-w-full text-right text-[1.25rem]">
-                    <FrameComponent/>
+                    <SignupMain/>
                 </div>
             </main>
         </div>

@@ -3,8 +3,6 @@
 import {usePathname} from "next/navigation";
 import Link from "next/link";
 import {signOut, useSession} from "next-auth/react";
-import Image from "next/image";
-// import {cookies} from "next/headers";
 
 
 export const Header = () => {
@@ -13,16 +11,11 @@ export const Header = () => {
     if (pathname === "/") {
         return null;
     }
-
-    const signout = () => {
-        signOut();
-    }
-
     return (
         <header
             className="self-stretch flex flex-row items-start justify-between py-[1.562rem] px-[5rem] box-border max-w-full gap-[1.25rem] mq975:pl-[2.5rem] mq975:pr-[2.5rem] mq975:box-border bg-white">
             <Link href={"/"}>
-                <Image
+                <img
                     className="h-[2.5rem] w-[3.188rem] relative overflow-hidden shrink-0"
                     loading="lazy"
                     alt=""
@@ -59,7 +52,7 @@ export const Header = () => {
                         session.data ?
                             <div
                                 className={"cursor-pointer relative tracking-[-0.1em] inline-block min-w-[2.438rem]" + (pathname === "/login" ? " text-main" : "")}
-                                onClick={signout}
+                                onClick={() => signOut()}
                             >
                                 로그아웃
                             </div> :
