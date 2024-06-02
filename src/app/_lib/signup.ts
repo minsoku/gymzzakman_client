@@ -6,7 +6,7 @@ import {redirect} from "next/navigation";
 const validateFormData = (formData: FormData, key: string)=> {
     const value = formData.get(key);
     if (!value || !value.toString().trim()) {
-        return { message: `no_${key}` };
+        return { message: `no_${key}`.toUpperCase() };
     }
     return null;
 };
@@ -24,6 +24,7 @@ export const signUp = async (formData: FormData) => {
             body: formData,
             credentials: 'include',
         })
+        console.log("response", response);
         const res = await response.json();
         if (res?.success) {
             shouldRedirect = true;

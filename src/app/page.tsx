@@ -13,7 +13,7 @@ export default function Page() {
             <main
                 className="h-[68.225rem] w-full relative bg-[url('https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/home-background.png')] bg-cover bg-no-repeat bg-[top] shrink-0 [debug_commit:1de1738] max-w-[130%] z-[1] text-left text-[0.75rem] text-silver font-inter mq675:h-auto mq675:min-h-[1091.6]">
                 <MainButton />
-                <h1 className="text-black m-0 absolute top-[21.688rem] left-[35.188rem] text-[4.375rem] tracking-[-0.02em] leading-[5.938rem] inline-block italic font-bold font-inherit text-darkslategray text-center w-[49.531rem] h-[14.275rem] z-[2] mq450:text-[2.625rem] mq450:leading-[3.563rem] mq750:text-[3.5rem] mq750:leading-[4.75rem]">
+                <h1 className="text-black m-0 absolute top-[21.688rem] left-[35.188rem] text-[4.375rem] tracking-[-0.02em] leading-[5.938rem] inline-block font-bold font-inherit text-darkslategray text-center w-[49.531rem] h-[14.275rem] z-[2] mq450:text-[2.625rem] mq450:leading-[3.563rem] mq750:text-[3.5rem] mq750:leading-[4.75rem]">
                     <p className="m-0">원하는 운동정보</p>
                     <p className="m-0">이젠 간편하게 검색!</p>
                 </h1>

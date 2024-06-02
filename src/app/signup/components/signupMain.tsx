@@ -1,6 +1,7 @@
 "use client";
 import {useState} from "react";
 import {signUp} from "@/app/_lib/signup";
+import errorCodes from "@/app/const/errorcodes";
 
 export const SignupMain = () => {
     const [file, setFile] = useState<any>(null);
@@ -8,6 +9,7 @@ export const SignupMain = () => {
     const [nickname, setNickname] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [passwordConfirm, setPasswordConfirm] = useState<string>('');
+    const [phone, setPhone] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
     const handleFileChange = (e: any): void => {
         const file = e.target.files[0];
@@ -20,19 +22,20 @@ export const SignupMain = () => {
     };
 
     const postSignUp = () => {
-        console.log("111");
         if (password !== passwordConfirm) {
-            setError("EXIST_PASSWORD")
+            setError("PASSWORD_MISMATCH");
             return;
         }
         const formData = new FormData();
         formData.append('email', email);
         formData.append('nickname', nickname);
         formData.append('password', password);
+        formData.append('phone', phone);
         if (file) {
             formData.append('file', file);
         }
         signUp(formData).then((res) => {
+            console.log(res);
             if (res?.message) {
                 setError(res?.message);
             }
@@ -55,19 +58,24 @@ export const SignupMain = () => {
         setPasswordConfirm(e.target.value);
     }
 
+    const onChnagePhone = (e: any): void => {
+        setPhone(e.target.value);
+    }
+
     return (
         <div
             className="self-stretch flex flex-col items-end justify-start gap-[1.206rem] max-w-full text-right text-[1.25rem] text-black font-inter">
-            <div className="w-[47.875rem] flex flex-row flex-wrap items-start justify-start gap-[1.562rem] max-w-full">
+            <div
+                className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[1.562rem] max-w-full">
                 <div
-                    className="w-[3.375rem] flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
+                    className="w-[4.563rem] flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
                     <div
-                        className="self-stretch relative tracking-[-0.05em] font-medium inline-block min-w-[3.375rem] z-[1] mq450:text-[1rem]">
+                        className="self-stretch relative tracking-[-0.05em] font-medium inline-block min-w-[4.563rem] z-[1] mq450:text-[1rem]">
                         이메일
                     </div>
                 </div>
                 <div
-                    className="flex-1 rounded-3xs bg-white box-border flex flex-row items-start justify-start py-[2.062rem] px-[2.187rem] min-w-[27.938rem] max-w-full z-[1] border-[1px] border-solid border-lightgray-100 mq750:min-w-full">
+                    className="flex-1 rounded-3xs bg-white box-border flex flex-row items-start justify-start pt-[2.125rem] px-[2.187rem] pb-[2rem] min-w-[27.938rem] max-w-full z-[1] border-[1px] border-solid border-lightgray-100 mq750:min-w-full">
                     <input
                         className="w-[36.25rem] [border:none] [outline:none] font-semibold font-inter text-[1.25rem] bg-[transparent] h-[1.5rem] relative tracking-[-0.05em] text-gainsboro-200 text-left inline-block max-w-full p-0 z-[2] mq450:text-[1rem]"
                         placeholder="이메일 주소를 입력해주세요."
@@ -76,7 +84,8 @@ export const SignupMain = () => {
                     />
                 </div>
             </div>
-            <div className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[1.562rem] max-w-full">
+            <div
+                className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[1.562rem] max-w-full">
                 <div
                     className="w-[4.563rem] flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
                     <div
@@ -94,7 +103,8 @@ export const SignupMain = () => {
                     />
                 </div>
             </div>
-            <div className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[1.562rem] max-w-full">
+            <div
+                className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[1.562rem] max-w-full">
                 <div
                     className="w-[4.563rem] flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
                     <div
@@ -112,7 +122,8 @@ export const SignupMain = () => {
                     />
                 </div>
             </div>
-            <div className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[1.562rem] max-w-full">
+            <div
+                className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[1.562rem] max-w-full">
                 <div
                     className="w-[4.563rem] flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
                     <div
@@ -137,24 +148,6 @@ export const SignupMain = () => {
                         className="w-[4.438rem] flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
                         <div
                             className="self-stretch relative tracking-[-0.05em] font-medium inline-block min-w-[4.438rem] z-[1] mq450:text-[1rem]">
-                            생년월일
-                        </div>
-                    </div>
-                    <div
-                        className="flex-1 rounded-3xs bg-white box-border flex flex-row items-start justify-start pt-[1.937rem] px-[2.187rem] pb-[2.187rem] min-w-[27.938rem] max-w-full z-[1] border-[1px] border-solid border-lightgray-100 mq750:min-w-full">
-                        <input
-                            className="w-[36.25rem] [border:none] [outline:none] font-semibold font-inter text-[1.25rem] bg-[transparent] h-[1.5rem] relative tracking-[-0.05em] text-gainsboro-200 text-left inline-block max-w-full p-0 z-[2] mq450:text-[1rem]"
-                            placeholder="YYYYMMDD"
-                            type="text"
-                        />
-                    </div>
-                </div>
-                <div
-                    className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[1.562rem] max-w-full">
-                    <div
-                        className="w-[4.438rem] flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
-                        <div
-                            className="self-stretch relative tracking-[-0.05em] font-medium inline-block min-w-[4.438rem] z-[1] mq450:text-[1rem]">
                             휴대폰
                         </div>
                     </div>
@@ -164,6 +157,7 @@ export const SignupMain = () => {
                             className="w-[36.25rem] [border:none] [outline:none] font-semibold font-inter text-[1.25rem] bg-[transparent] h-[1.5rem] relative tracking-[-0.05em] text-gainsboro-200 text-left inline-block max-w-full p-0 z-[2] mq450:text-[1rem]"
                             placeholder="‘-’ 빼고 숫자만 입력"
                             type="tel"
+                            onChange={onChnagePhone}
                         />
                     </div>
                 </div>
@@ -200,14 +194,15 @@ export const SignupMain = () => {
                         </div>
                         :
                         <div className="w-20">
-                            <img src={URL.createObjectURL(file)} alt="profile_image" />
+                            <img src={URL.createObjectURL(file)} alt="profile_image"/>
                         </div>
                     }
 
                 </div>
             </div>
+            <div className="text-red-500 text-lg mb-4">{error ? errorCodes[error] : ''}</div>
             <button
-                className="mt-10 cursor-pointer [border:none] py-[1.812rem] pr-[1.25rem] pl-[1.312rem] self-stretch flex flex-row items-start justify-center box-border max-w-full z-[1] bg-main rounded-2xl"
+                className="mt-5 cursor-pointer [border:none] py-[1.812rem] pr-[1.25rem] pl-[1.312rem] self-stretch flex flex-row items-start justify-center box-border max-w-full z-[1] bg-main rounded-2xl"
                 onClick={postSignUp}
             >
                 <b className="relative text-[1.875rem] tracking-[-0.05em] font-inter text-white text-left z-[2] mq450:text-[1.125rem] mq1050:text-[1.5rem]">
