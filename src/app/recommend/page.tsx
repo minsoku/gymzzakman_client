@@ -3,6 +3,7 @@
 import {useState} from "react";
 import {RecommendMain} from "@/app/recommend/components/recommendMain";
 import {Chapter} from "@/app/recommend/components/chapter";
+import {Result} from "@/app/recommend/components/result";
 
 const chapterList = [
     {
@@ -36,11 +37,14 @@ const chapterList = [
 export default function Page() {
     const [isStarted, setIsStarted] = useState(false);
     const [chapter, setChapter] = useState(1);
+    const [result, setResult] = useState(false);
     const testStart = () => {
         setIsStarted(true);
     }
     const chapterChange = (chapter: number) => {
         if (chapter > chapterList.length) {
+            console.log(1);
+            setResult(true);
             return;
         }
         setChapter(chapter);
@@ -48,8 +52,9 @@ export default function Page() {
 
     return (
         <div>
-            {!isStarted && <RecommendMain testStart={testStart} />}
-            {isStarted && <Chapter chapterList={chapterList} chapter={chapter} chapterChange={chapterChange} />}
+            {!result && !isStarted && <RecommendMain testStart={testStart} />}
+            {!result && isStarted && <Chapter chapterList={chapterList} chapter={chapter} chapterChange={chapterChange} />}
+            {result && <Result />}
         </div>
     );
 };
