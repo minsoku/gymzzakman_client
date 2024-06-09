@@ -43,7 +43,6 @@ export default function Page() {
     }
     const chapterChange = (chapter: number) => {
         if (chapter > chapterList.length) {
-            console.log(1);
             setResult(true);
             return;
         }

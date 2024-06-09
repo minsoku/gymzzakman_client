@@ -27,8 +27,9 @@ export const AA = () => {
                 </svg>
                 <input
                     className="w-full border-b-black [outline:none] font-semibold font-inter text-[1.25rem] bg-[transparent] absolute top-[2.063rem] left-[4.875rem] tracking-[-0.05em] text-gainsboro-200 text-left inline-block p-0 z-[2] mq450:text-[1rem]"
-                    placeholder="검색어를 입력해주세요"
+                    value="밸류의 젠지"
                     type="text"
+                    disabled={true}
                 />
             </div>
             <button

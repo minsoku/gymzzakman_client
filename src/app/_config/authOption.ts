@@ -2,13 +2,6 @@ import {NextAuthOptions, Session} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import {responseStatus} from "@/app/_helper/responseStatus";
 
-interface NewSession extends Session {
-    access: string;
-    refresh: string;
-    image: string;
-}
-
-
 export const authOptions: NextAuthOptions = {
     providers: [
         CredentialsProvider({
@@ -35,8 +28,6 @@ export const authOptions: NextAuthOptions = {
                 const user = await authResponse.json();
                 return {
                     ...user,
-                    accessToken: user.accessToken,
-                    refreshToken: user.refreshToken,
                 };
             }
         })
@@ -57,13 +48,10 @@ export const authOptions: NextAuthOptions = {
             return token;
         },
         session({session, token}) {
-            const newSession: NewSession = {
+            return {
                 ...session,
-                access: token.accessToken as string,
-                refresh: token.refreshToken as string,
-                image: token.image as string
+                user: token,
             };
-            return newSession;
         },
     }
 }
