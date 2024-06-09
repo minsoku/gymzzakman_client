@@ -34,7 +34,7 @@ export const Header = () => {
                         </div>
                     </Link>
                     <div
-                        className="relative tracking-[-0.1em] inline-block min-w-[4.938rem] whitespace-nowrap cursor-pointer"
+                        className={"relative tracking-[-0.1em] inline-block min-w-[4.938rem] whitespace-nowrap cursor-pointer" + (pathname === "/recommend" ? " text-main" : "")}
                     >
                         운동시설 찾기
                     </div>
