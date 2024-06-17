@@ -3,8 +3,11 @@
 import Link from "next/link";
 import {useSession} from "next-auth/react";
 
+interface Props {
+    total: number;
+}
 
-export const AA = () => {
+export const AA = ({ total }: Props) => {
     const session = useSession();
 
     return (
@@ -77,7 +80,7 @@ export const AA = () => {
                         className="h-[2.813rem] w-[6.938rem] relative rounded-181xl bg-white box-border hidden border-[1px] border-solid border-darkgray"/>
                     <div className="w-[4rem] relative tracking-[-0.05em] font-semibold inline-block min-w-[4rem] z-[1]">
                         <span>{`전체 `}</span>
-                        <span className="text-main"> 20</span>
+                        <span className="text-main"> {total}</span>
                     </div>
                 </div>
                 <div

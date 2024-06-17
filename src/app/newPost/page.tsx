@@ -10,7 +10,7 @@ interface Position {
     longitude: string;
 }
 
-const categoryObj = {
+export const categoryObj = {
     FAQ: 'FAQ',
     AMITY: '우리동네',
     CERTIFICATIONS: '운동인증',
@@ -55,12 +55,22 @@ export default function Page() {
 
     const postContent = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        if (title.trim() === '') {
+            alert('제목을 입력해주세요.');
+            return;
+        }
+        if (content.trim() === '') {
+            alert('내용을 입력해주세요.');
+            return;
+        }
+
         const formData = new FormData();
         formData.append("title", title);
         formData.append("content", content);
         formData.append("lat", position.latitude.toString());
         formData.append("lng", position.longitude.toString());
         formData.append("category", category);
+        console.log(formData)
         hashtags.forEach((hashtag) => {
             formData.append('hashtags', hashtag);
         });

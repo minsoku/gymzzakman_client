@@ -35,7 +35,6 @@ export const SignupMain = () => {
             formData.append('file', file);
         }
         signUp(formData).then((res) => {
-            console.log(res);
             if (res?.message) {
                 setError(res?.message);
             }
