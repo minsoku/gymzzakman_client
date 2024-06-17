@@ -3,19 +3,24 @@
 import {redirect} from "next/navigation";
 import {cookies} from "next/headers";
 import {renewAccessToken} from "@/app/_lib/renewAccessToken";
+import {getServerSession} from "next-auth";
+import {authOptions} from "@/app/_config/authOption";
 
-export const post = async (formData: FormData) => {
+export const serverNewPost = async (formData: FormData) => {
+    const session = await getServerSession(authOptions);
     let shouldRedirect = false;
-    let bearer = cookies().get("connect.access");
-    if (!bearer) {
-        await renewAccessToken();
-        bearer = cookies().get("connect.access");
-    }
+    // @ts-ignore
+    let bearer = session?.user?.accessToken;
+    // if (!bearer) {
+    //     await renewAccessToken();
+    //     bearer = cookies().get("connect.access");
+    // }
+
     try {
-        const response = await fetch(`${process.env.NEXTAUTH_URL_INTERNAL}/review-posts`, {
+        const response = await fetch(`${process.env.NEXTAUTH_URL_INTERNAL}/posts`, {
             method: 'post',
             headers: {
-                'Authorization': `Bearer ${bearer?.value}`,
+                'Authorization': `Bearer ${bearer}`,
             },
             body: formData,
             credentials: 'include',
@@ -25,7 +30,7 @@ export const post = async (formData: FormData) => {
             throw new Error(res.message);
         }
         if (res?.success) {
-            shouldRedirect = true;
+            return {success: true, message: res.message, id: res.post.id};
         } else {
             return {message: res.message};
         }
@@ -34,9 +39,9 @@ export const post = async (formData: FormData) => {
         throw new Error("INTERNAL_SERVER_ERROR");
     }
 
-    if (shouldRedirect) {
-        redirect('/');
-    }
+    // if (shouldRedirect) {
+    //     redirect('/');
+    // }
 
-    return {message: null};
+    return {message: "gd"};
 }

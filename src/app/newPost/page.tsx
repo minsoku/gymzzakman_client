@@ -1,8 +1,9 @@
 "use client"
 
 import React, {ChangeEventHandler, useEffect, useState} from "react";
-import {renewAccessToken} from "@/app/_lib/renewAccessToken";
 import {useSession} from "next-auth/react";
+import {serverNewPost} from "@/app/_lib/newPost";
+import {redirect, useRouter} from "next/navigation";
 
 interface Position {
     latitude: string;
@@ -18,6 +19,12 @@ const categoryObj = {
 
 
 export default function Page() {
+    const session = useSession();
+    const router = useRouter()
+
+    if (!session.data) {
+        redirect('/community')
+    }
     const [files, setFiles] = useState<File[]>([]);
     const [title, setTitle] = useState<string>('');
     const [content, setContent] = useState<string>('');
@@ -25,8 +32,6 @@ export default function Page() {
     const [category, setCategory] = useState<string>('INFORMATION')
     const [hashtags, setHashtags] = useState<string[]>([]);
     const [newHashtag, setNewHashtag] = useState('');
-
-    const session = useSession()
 
     const handleFileChange = (e: any): void => {
         const newFiles: File[] = [];
@@ -50,20 +55,23 @@ export default function Page() {
 
     const postContent = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(session);
         const formData = new FormData();
         formData.append("title", title);
         formData.append("content", content);
         formData.append("lat", position.latitude.toString());
         formData.append("lng", position.longitude.toString());
         formData.append("category", category);
-        for (let i = 0; i < hashtags.length; i++) {
-            formData.append('hashtags', hashtags[i]);
-        }
+        hashtags.forEach((hashtag) => {
+            formData.append('hashtags', hashtag);
+        });
         for (let i = 0; i < files.length; i++) {
             formData.append('files', files[i])
         }
-        renewAccessToken();
+        const result = await serverNewPost(formData);
+        if (result.success) {
+            alert('게시물이 등록되었습니다.')
+            router.push('/community')
+        }
     }
 
     const onChangeTitle: ChangeEventHandler<HTMLInputElement> = (e: React.ChangeEvent<HTMLInputElement>) => {

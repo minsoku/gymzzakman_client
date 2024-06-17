@@ -38,10 +38,17 @@ export const authOptions: NextAuthOptions = {
     },
     session: {
         strategy: 'jwt',
-        maxAge: 30 * 60, // 30분
+        maxAge: 30 * 600, // 30분
     },
     callbacks: {
-        async jwt({ token, user, session, trigger}) {
+        async jwt({ token, user }) {
+            // const currentTimestamp = Math.floor(Date.now() / 1000);
+            // const tokenTimestamp: number = token.exp as number;
+            // if(tokenTimestamp < currentTimestamp) {
+            //
+            // }
+            // console.log("현재 시간", new Date(currentTimestamp * 1000).toLocaleString())
+            // console.log("jwt", new Date(tokenTimestamp * 1000).toLocaleString());
             if (user) {
                 token = {...user};
             }
