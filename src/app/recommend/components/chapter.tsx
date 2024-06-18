@@ -11,12 +11,20 @@ interface Iprops {
 }
 
 export const Chapter = ({chapter, chapterChange, chapterList}: Iprops) => {
-    let bar = chapter * 3
     return (
         <div className="h-screen bg-gray-100">
             <div className="pt-40"/>
             <div className="w-1/3 h-2 bg-gray-300 m-auto rounded-3xl">
-                <div className={`h-full bg-main rounded-3xl w-${bar}/12`} />
+                {
+                    chapter === 1 ?
+                        <div className="h-full bg-main rounded-3xl w-3/12"/> :
+                        chapter === 2 ?
+                            <div className="h-full bg-main rounded-3xl w-1/2"/> :
+                            chapter === 3 ?
+                                <div className="h-full bg-main rounded-3xl w-3/4"/> :
+                                <div className="h-full bg-main rounded-3xl w-full"/>
+                }
+
             </div>
             <div className="pt-10"/>
             <div className="w-2/3 h-1/2 m-auto border-gray-200 border-[1px] rounded-xl bg-white flex flex-col">

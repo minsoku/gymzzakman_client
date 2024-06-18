@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState, useRef } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import "./slider.css";
 
 interface SliderProps {
@@ -80,10 +80,10 @@ const Slider = ({ min, max, onChange }: SliderProps) => {
     );
 };
 
-Slider.propTypes = {
-    min: PropTypes.number.isRequired,
-    max: PropTypes.number.isRequired,
-    onChange: PropTypes.func.isRequired
-};
+// Slider.propTypes = {
+//     min: PropTypes.number.isRequired,
+//     max: PropTypes.number.isRequired,
+//     onChange: PropTypes.func.isRequired
+// };
 
 export default Slider;
