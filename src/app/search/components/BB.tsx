@@ -1,6 +1,6 @@
 
 
-export const BB = () => {
+export const BB = ({data}: any) => {
     return (
         <section
             className="w-[72rem] flex flex-col items-end justify-start pt-[0rem] px-[0rem] pb-[0.25rem] box-border gap-[1.875rem] max-w-full text-left text-[0.938rem] text-black font-inter">

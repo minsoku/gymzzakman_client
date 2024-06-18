@@ -5,12 +5,16 @@ import {useCallback, useEffect, useState} from "react";
 import {Location} from "@/app/search/components/location";
 import {Price} from "@/app/search/components/price";
 import {Exercise} from "@/app/search/components/exercise";
-import {IFitnessCenter} from "@/app/search/page";
+import {getFitnessCenter} from "@/app/_lib/getFitnessFilter";
 
-export const AA = ({data}: any) => {
+export const AA = ({data, setFilterDataHandler}: any) => {
     const [type, setType] = useState<string>("location");
-    const [priceValue, setPriceValue] = useState<any>("");
-    const [inputValue, setInputValue] = useState<string>("");
+    const [inputLocationValue, setInputLocationValue] = useState<string>("");
+    const [inputPriceValue, setInputPriceValue] = useState<any>({
+        text: "",
+        option: {minPrice: 0, maxPrice: 200, minMonth: 0, maxMonth: 12}
+    });
+    const [inputExerciseValue, setInputExerciseValue] = useState<string>("");
 
     const handleType = useCallback((type: string) => {
         setType(type);
@@ -18,17 +22,21 @@ export const AA = ({data}: any) => {
 
     const selectOption = (param: string, option?: any) => {
         if (param === 'location') {
-            setInputValue("위치 : " + option);
+            setInputLocationValue("위치 : " + option);
         }
         if(param === 'price') {
-            setPriceValue(option);
-            setInputValue(inputValue + "  " + "가격 : " + option.minPrice + "만원 ~ " + option.maxPrice + "만원" + "기간|" + option.minMonth + "개월 ~ " + option.maxMonth + "개월");
+            setInputPriceValue( {option,text: "  " + "가격 : " + option.minPrice + "만원 ~ " + option.maxPrice + "만원" + " 기간" + option.minMonth + "개월 ~ " + option.maxMonth + "개월"});
         }
         if(param === '헬스') {
-            setInputValue(inputValue + "  " + "운동종목 : 헬스");
+            setInputExerciseValue("  " + "운동종목 : 헬스");
         }
     }
 
+    const getFitnessFilterHandler = async () => {
+        getFitnessCenter(inputPriceValue.option).then((res) => {
+            setFilterDataHandler(res, res.length)
+        });
+    }
     return (
         <section className="w-[71.938rem] flex flex-row flex-wrap items-start justify-center gap-[0.625rem] max-w-full">
             <div
@@ -43,15 +51,14 @@ export const AA = ({data}: any) => {
                 </svg>
                 <input
                     className="w-full border-b-black [outline:none] font-semibold font-inter text-[1.25rem] bg-[transparent] absolute top-[2.063rem] left-[4.875rem] tracking-[-0.05em] text-gainsboro-200 text-left inline-block p-0 z-[2] mq450:text-[1rem]"
-                    value={inputValue}
+                    value={inputLocationValue + inputPriceValue.text + inputExerciseValue}
                     type="text"
                     disabled={true}
                 />
             </div>
             <button
+                onClick={getFitnessFilterHandler}
                 className="cursor-pointer py-[1.75rem] px-[3.687rem] bg-main rounded-3xs flex flex-row items-start justify-start z-[1] border-[1px] border-solid hover:box-border hover:border-[1px] rounded-2xl">
-                <div
-                    className="h-[5.625rem] w-[12.813rem] relative rounded-3xs bg-main box-border hidden border-[1px] border-solid border-main"/>
                 <b className="relative text-[1.563rem] tracking-[-0.1em] inline-block font-inter text-white text-left min-w-[5.313rem] z-[2] mq450:text-[1.25rem]">
                     검색하기
                 </b>
