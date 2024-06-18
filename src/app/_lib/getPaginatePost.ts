@@ -1,8 +1,8 @@
 "use server";
 
-export const getPaginatePost = async (page: number, category: string) => {
+export const getPaginatePost = async (page: number, category: string, search?: string) => {
     try {
-        const response = await fetch(`${process.env.NEXTAUTH_URL_INTERNAL}/posts?page=${page}&category=${category}`, {
+        const response = await fetch(`${process.env.NEXTAUTH_URL_INTERNAL}/posts?page=${page}&category=${category}&search=${search}`, {
             method: 'get',
             credentials: 'include',
         })

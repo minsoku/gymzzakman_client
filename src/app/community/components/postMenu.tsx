@@ -1,26 +1,20 @@
-"use client"
-
 import Link from "next/link";
 import {useSession} from "next-auth/react";
 import {categoryObj, CategoryType} from "@/app/_const/categoryObj";
-import {useState} from "react";
 
 interface Props {
     category: string;
     total: number;
     categoryHandler: (category: string) => void;
+    searchHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    fetchData: (page: number) => void;
 }
 
-export const PostMenu = ({ category, total, categoryHandler }: Props) => {
+export const PostMenu = ({ category, total, categoryHandler, searchHandler, fetchData }: Props) => {
     const session = useSession();
-    const [searchText, setSearchText] = useState<string>("");
-
-    const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchText(e.target.value);
-    }
 
     const search = () => {
-        console.log(searchText);
+        fetchData(1);
     }
 
     return (

@@ -9,8 +9,8 @@ export const PostList = ( {data}: PostListProps) => {
     return (
         <div className="w-full h-full">
             {
-                data?.map((post: PostData) => (
-                    <PostListMain post={post} />
+                data?.map((post: PostData, key: number) => (
+                    <PostListMain key={key} post={post} />
                 ))
             }
         </div>

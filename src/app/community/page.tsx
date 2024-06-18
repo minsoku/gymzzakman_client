@@ -1,8 +1,8 @@
 "use client"
 
+import {ChangeEvent, useEffect, useState} from "react";
 import {PostMenu} from "@/app/community/components/postMenu";
 import {PostList} from "@/app/community/components/postList";
-import {useEffect, useState} from "react";
 import {getPaginatePost} from "@/app/_lib/getPaginatePost";
 import PostPagination from "@/app/community/components/postPagination";
 
@@ -33,15 +33,17 @@ export default function Page() {
     const [error, setError] = useState(false);
     const [total, setTotal] = useState<number>(0);
     const [category, setCategory] = useState<string>("");
+    const [searchText, setSearchText] = useState<string>("");
 
-    const fetchData = (page: number, categoryValue: string) => {
-        getPaginatePost(page, categoryValue)
+    const fetchData = (page: number) => {
+        getPaginatePost(page, category, searchText)
             .then((res) => {
                 setTotal(res.total);
                 setData(res.data);
                 setLoading(false);
             })
             .catch((err) => {
+                console.error(err);
                 setError(true);
                 setLoading(false);
             });
@@ -49,14 +51,18 @@ export default function Page() {
 
     const categoryHandler = (category: string) => {
         setCategory(category);
-        fetchData(1, category);
+        fetchData(1);
+    }
+
+    const searchHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setSearchText(e.target.value);
     }
 
     useEffect(() => {
-        fetchData(1, "");
+        fetchData(1);
     }, [])
 
-    if (error)  return <div className="h-screen bg-white">에러 발생</div>
+    if (error) return <div className="h-screen bg-white">에러 발생</div>
     if (loading) return <div className="h-screen bg-white">로딩중...</div>
     return (
         <div
@@ -65,9 +71,10 @@ export default function Page() {
                 className="w-[89.25rem] flex flex-row items-start justify-center py-[0rem] px-[1.25rem] box-border max-w-full m-auto">
                 <section
                     className="w-[64.5rem] flex flex-col items-end justify-start gap-[5.062rem] max-w-full text-left text-[1.25rem] text-black font-inter mq725:gap-[1.25rem] mq1025:gap-[2.5rem]">
-                    <PostMenu category={category} total={total} categoryHandler={categoryHandler}/>
+                    <PostMenu category={category} total={total} categoryHandler={categoryHandler}
+                              searchHandler={searchHandler} fetchData={fetchData}/>
                     <PostList data={data}/>
-                    <PostPagination category={category} total={total} fetchData={fetchData} />
+                    <PostPagination total={total} fetchData={fetchData}/>
                 </section>
             </main>
         </div>

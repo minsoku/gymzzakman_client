@@ -1,6 +1,6 @@
 "use client"
 
-import {useState} from "react";
+import {useCallback, useState} from "react";
 import {RecommendMain} from "@/app/recommend/components/recommendMain";
 import {Chapter} from "@/app/recommend/components/chapter";
 import {Result} from "@/app/recommend/components/result";
@@ -41,18 +41,18 @@ export default function Page() {
     const testStart = () => {
         setIsStarted(true);
     }
-    const chapterChange = (chapter: number) => {
+    const handleChapterChange = useCallback((chapter: number) => {
         if (chapter > chapterList.length) {
             setResult(true);
             return;
         }
         setChapter(chapter);
-    }
+    }, [setChapter])
 
     return (
         <div>
             {!result && !isStarted && <RecommendMain testStart={testStart} />}
-            {!result && isStarted && <Chapter chapterList={chapterList} chapter={chapter} chapterChange={chapterChange} />}
+            {!result && isStarted && <Chapter chapterList={chapterList} chapter={chapter} chapterChange={handleChapterChange} />}
             {result && <Result />}
         </div>
     );
