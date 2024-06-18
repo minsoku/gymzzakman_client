@@ -9,7 +9,6 @@ interface ILocationProps {
 export const Location = ({data, selectOption}: ILocationProps) => {
     const apiKey: string = "ea22cc7b4726298c76cf9fc0c40e46bc";
     const [map, setMap] = useState<any>(null);
-    const [currentAddress, setCurrentAddress] = useState<string>("");
 
     useEffect(() => {
         if (data.length > 0) {
@@ -33,15 +32,15 @@ export const Location = ({data, selectOption}: ILocationProps) => {
                     setMap(newMap);
 
                     // @ts-ignore
-                    for (let i = 0; i < data.length; i++) {
-                        // @ts-ignore
-                        new window.kakao.maps.CustomOverlay({
-                            // @ts-ignore
-                            position: new window.kakao.maps.LatLng(data[i].lat, data[i].lng),
-                            map: newMap,
-                            content: `<div class="customoverlay"><span class="title">${data[i].name}<span></div>`
-                        })
-                    }
+                    // for (let i = 0; i < data.length; i++) {
+                    //     // @ts-ignore
+                    //     new window.kakao.maps.CustomOverlay({
+                    //         // @ts-ignore
+                    //         position: new window.kakao.maps.LatLng(data[i].lat, data[i].lng),
+                    //         map: newMap,
+                    //         content: `<div class="customoverlay"><span class="title">${data[i].name}<span></div>`
+                    //     })
+                    // }
                 });
             };
 
@@ -53,21 +52,22 @@ export const Location = ({data, selectOption}: ILocationProps) => {
 
 
     const selectOrder = () => {
-        if (map) {
-            // @ts-ignore
-            const center = map.getCenter();
-            // @ts-ignore
-            const geocoder = new window.kakao.maps.services.Geocoder();
-            // @ts-ignore
-            const coord = new window.kakao.maps.LatLng(center.getLat(), center.getLng());
-            const callback = (result: any, status: any) => {
-                if (status === "OK") {
-                    const currentAddress = result[0].address.region_1depth_name + " " + result[0].address.region_2depth_name;
-                    selectOption("location", currentAddress);
-                }
-            }
-            geocoder.coord2Address(coord.La, coord.Ma, callback);
-        }
+        console.log(1);
+        // if (map) {
+        //     // @ts-ignore
+        //     const center = map.getCenter();
+        //     // @ts-ignore
+        //     const geocoder = new window.kakao.maps.services.Geocoder();
+        //     // @ts-ignore
+        //     const coord = new window.kakao.maps.LatLng(center.getLat(), center.getLng());
+        //     const callback = (result: any, status: any) => {
+        //         if (status === "OK") {
+        //             const currentAddress = result[0].address.region_1depth_name + " " + result[0].address.region_2depth_name;
+        //             selectOption("location", currentAddress);
+        //         }
+        //     }
+        //     geocoder.coord2Address(coord.La, coord.Ma, callback);
+        // }
 
     }
 
@@ -80,7 +80,6 @@ export const Location = ({data, selectOption}: ILocationProps) => {
             </div>
             <div className="self-stretch items-end justify-start gap-[1.875rem] max-w-full">
                 <div className="self-stretch relative">
-                    {/*<KakaoMap data={data}/>*/}
                     <div>
                         <div id="map" style={{width: "90%", height: "500px", margin: "0 auto"}}/>
                     </div>
