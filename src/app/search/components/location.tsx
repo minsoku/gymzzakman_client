@@ -1,4 +1,3 @@
-import KakaoMap from "@/app/search/components/kakaoMap";
 import {useEffect, useState} from "react";
 
 interface ILocationProps {
@@ -11,7 +10,7 @@ export const Location = ({data, selectOption}: ILocationProps) => {
     const [map, setMap] = useState<any>(null);
 
     useEffect(() => {
-        if (data.length > 0) {
+        // if (data.length > 0) {
             const script = document.createElement('script');
             script.async = true;
             script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${apiKey}&libraries=services`;
@@ -47,7 +46,7 @@ export const Location = ({data, selectOption}: ILocationProps) => {
             return () => {
                 document.head.removeChild(script);
             };
-        }
+        // }
     }, [data]);
 
 
