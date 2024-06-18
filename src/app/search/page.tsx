@@ -1,7 +1,35 @@
+"use client"
+
 import {AA} from "@/app/search/components/AA";
 import {BB} from "@/app/search/components/BB";
+import {useEffect, useState} from "react";
+import {getFitnessCenter} from "@/app/_lib/getFitnessCenter";
+
+export interface IFitnessCenter {
+    address: string;
+    id: number;
+    name: string;
+    phoneNumber: string;
+    profileImageUrl: string;
+    safeNumber: string;
+    shortAddr: string;
+    pricesTable: {
+        id: number;
+        month: number;
+        order: number;
+        price: number;
+    }[];
+}
+
+
 
 export default function Page() {
+    const [data, setData] = useState<IFitnessCenter[]>([]);
+    useEffect(() => {
+        getFitnessCenter().then((res) => {
+            setData(res)
+        });
+    }, []);
     return (
         <div className="w-full relative bg-white overflow-hidden flex flex-col items-start justify-start gap-[0.062rem] leading-[normal] tracking-[normal]">
             <main className="self-stretch bg-whitesmoke flex flex-col items-center justify-start pt-[9.312rem] pb-[4.687rem] pr-[1.25rem] pl-[1.375rem] box-border gap-[3.5rem] max-w-full text-left text-[2.813rem] text-black font-inter lg:pt-[6.063rem] lg:pb-[3.063rem] lg:box-border mq750:gap-[1.75rem] mq1050:pt-[3.938rem] mq1050:pb-[2rem] mq1050:box-border mq450:pt-[2.563rem] mq450:pb-[1.313rem] mq450:box-border">
@@ -13,7 +41,7 @@ export default function Page() {
                         </h1>
                     </div>
                 </div>
-                <AA />
+                <AA data={data} />
                 {/*<BB />*/}
             </main>
         </div>

@@ -5,13 +5,29 @@ import {useCallback, useEffect, useState} from "react";
 import {Location} from "@/app/search/components/location";
 import {Price} from "@/app/search/components/price";
 import {Exercise} from "@/app/search/components/exercise";
+import {IFitnessCenter} from "@/app/search/page";
 
-export const AA = () => {
+export const AA = ({data}: any) => {
     const [type, setType] = useState<string>("location");
+    const [priceValue, setPriceValue] = useState<any>("");
+    const [inputValue, setInputValue] = useState<string>("");
 
     const handleType = useCallback((type: string) => {
         setType(type);
     }, []);
+
+    const selectOption = (param: string, option?: any) => {
+        if (param === 'location') {
+            setInputValue("위치 : " + option);
+        }
+        if(param === 'price') {
+            setPriceValue(option);
+            setInputValue(inputValue + "  " + "가격 : " + option.minPrice + "만원 ~ " + option.maxPrice + "만원" + "기간|" + option.minMonth + "개월 ~ " + option.maxMonth + "개월");
+        }
+        if(param === '헬스') {
+            setInputValue(inputValue + "  " + "운동종목 : 헬스");
+        }
+    }
 
     return (
         <section className="w-[71.938rem] flex flex-row flex-wrap items-start justify-center gap-[0.625rem] max-w-full">
@@ -27,7 +43,7 @@ export const AA = () => {
                 </svg>
                 <input
                     className="w-full border-b-black [outline:none] font-semibold font-inter text-[1.25rem] bg-[transparent] absolute top-[2.063rem] left-[4.875rem] tracking-[-0.05em] text-gainsboro-200 text-left inline-block p-0 z-[2] mq450:text-[1rem]"
-                    value="밸류의 젠지"
+                    value={inputValue}
                     type="text"
                     disabled={true}
                 />
@@ -65,9 +81,9 @@ export const AA = () => {
                         </button>
                     </div>
                 </div>
-                {type === "location" && <Location />}
-                {type === "price" && <Price />}
-                {type === "exercise" && <Exercise />}
+                {type === "location" && <Location selectOption={selectOption} data={data} />}
+                {type === "price" && <Price selectOption={selectOption} />}
+                {type === "exercise" && <Exercise selectOption={selectOption} />}
             </div>
         </section>
     )
