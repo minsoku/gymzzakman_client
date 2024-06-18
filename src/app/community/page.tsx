@@ -35,8 +35,8 @@ export default function Page() {
     const [category, setCategory] = useState<string>("");
     const [searchText, setSearchText] = useState<string>("");
 
-    const fetchData = (page: number) => {
-        getPaginatePost(page, category, searchText)
+    const fetchData = (page: number, categoryValue: string) => {
+        getPaginatePost(page, categoryValue, searchText)
             .then((res) => {
                 setTotal(res.total);
                 setData(res.data);
@@ -51,7 +51,7 @@ export default function Page() {
 
     const categoryHandler = (category: string) => {
         setCategory(category);
-        fetchData(1);
+        fetchData(1, category);
     }
 
     const searchHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -59,7 +59,7 @@ export default function Page() {
     }
 
     useEffect(() => {
-        fetchData(1);
+        fetchData(1, "");
     }, [])
 
     if (error) return <div className="h-screen bg-white">에러 발생</div>
@@ -72,9 +72,9 @@ export default function Page() {
                 <section
                     className="w-[64.5rem] flex flex-col items-end justify-start gap-[5.062rem] max-w-full text-left text-[1.25rem] text-black font-inter mq725:gap-[1.25rem] mq1025:gap-[2.5rem]">
                     <PostMenu category={category} total={total} categoryHandler={categoryHandler}
-                              searchHandler={searchHandler} fetchData={fetchData}/>
+                              searchHandler={searchHandler} fetchData={fetchData} />
                     <PostList data={data}/>
-                    <PostPagination total={total} fetchData={fetchData}/>
+                    <PostPagination total={total} category={category} fetchData={fetchData}/>
                 </section>
             </main>
         </div>

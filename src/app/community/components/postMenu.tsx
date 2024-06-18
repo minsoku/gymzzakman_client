@@ -7,14 +7,14 @@ interface Props {
     total: number;
     categoryHandler: (category: string) => void;
     searchHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    fetchData: (page: number) => void;
+    fetchData: (page: number, categoryValue: string) => void;
 }
 
 export const PostMenu = ({ category, total, categoryHandler, searchHandler, fetchData }: Props) => {
     const session = useSession();
 
     const search = () => {
-        fetchData(1);
+        fetchData(1, category);
     }
 
     return (

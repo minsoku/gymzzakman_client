@@ -2,29 +2,30 @@ import React, { useState } from "react";
 
 type Props = {
     total: number;
-    fetchData: (param: number) => void;
+    fetchData: (param: number, categoryValue: string) => void;
+    category: string
 }
 
-export default function PostPagination({ total, fetchData }: Props) {
+export default function PostPagination({ total, fetchData, category }: Props) {
     const totalPages = Math.ceil(total / 10);
     const [selectedPage, setSelectedPage] = useState(1); // 초기 선택 페이지를 1로 설정
 
     const handlePrevPage = () => {
         if (selectedPage > 1) {
-            fetchData(selectedPage - 1);
+            fetchData(selectedPage - 1, category);
             setSelectedPage(selectedPage - 1);
         }
     };
 
     const handleNextPage = () => {
         if (selectedPage < totalPages) {
-            fetchData(selectedPage + 1);
+            fetchData(selectedPage + 1, category);
             setSelectedPage(selectedPage + 1);
         }
     };
 
     const handleClick = (pageNumber: number) => {
-        fetchData(pageNumber);
+        fetchData(pageNumber, category);
         setSelectedPage(pageNumber);
     };
 
