@@ -4,17 +4,11 @@ import React, {ChangeEventHandler, useEffect, useState} from "react";
 import {useSession} from "next-auth/react";
 import {serverNewPost} from "@/app/_lib/newPost";
 import {redirect, useRouter} from "next/navigation";
+import {categoryObj} from "@/app/_const/categoryObj";
 
 interface Position {
     latitude: string;
     longitude: string;
-}
-
-export const categoryObj = {
-    FAQ: 'FAQ',
-    AMITY: '우리동네',
-    CERTIFICATIONS: '운동인증',
-    INFORMATION: '정보공유'
 }
 
 

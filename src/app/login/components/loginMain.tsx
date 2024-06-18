@@ -4,15 +4,13 @@ import type {NextPage} from "next";
 import Link from "next/link";
 import {signIn} from "next-auth/react";
 import React, {ChangeEventHandler, FormEventHandler, useEffect, useState} from "react";
-import {redirect, useRouter} from "next/navigation";
+import {redirect} from "next/navigation";
 import errorCodes from "@/app/const/errorcodes";
 
 export const LoginMain: NextPage = () => {
-    const router = useRouter();
     const [password, setPassword] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
-    const [saveId, setSaveId] = useState<string>("");
     const [idChecked, setIdChecked] = useState<boolean>(false);
 
     useEffect(() => {

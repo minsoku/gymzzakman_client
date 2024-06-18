@@ -1,9 +1,10 @@
 "use client"
 
-import {AA} from "@/app/community/components/AA";
+import {PostMenu} from "@/app/community/components/postMenu";
 import {PostList} from "@/app/community/components/postList";
 import {useEffect, useState} from "react";
 import {getPaginatePost} from "@/app/_lib/getPaginatePost";
+import PostPagination from "@/app/community/components/postPagination";
 
 export interface PostData {
     author: {
@@ -30,15 +31,11 @@ export default function Page() {
     const [data, setData] = useState<PostData[] | []>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
-    const [page, setPage] = useState(1);
     const [total, setTotal] = useState<number>(0);
-    const handlePage = (value: number) => {
-        setPage(value);
-        return null;
-    }
+    const [category, setCategory] = useState<string>("");
 
-    useEffect(() => {
-        getPaginatePost(page)
+    const fetchData = (page: number, categoryValue: string) => {
+        getPaginatePost(page, categoryValue)
             .then((res) => {
                 setTotal(res.total);
                 setData(res.data);
@@ -48,7 +45,17 @@ export default function Page() {
                 setError(true);
                 setLoading(false);
             });
+    }
+
+    const categoryHandler = (category: string) => {
+        setCategory(category);
+        fetchData(1, category);
+    }
+
+    useEffect(() => {
+        fetchData(1, "");
     }, [])
+
     if (error)  return <div className="h-screen bg-white">에러 발생</div>
     if (loading) return <div className="h-screen bg-white">로딩중...</div>
     return (
@@ -58,8 +65,9 @@ export default function Page() {
                 className="w-[89.25rem] flex flex-row items-start justify-center py-[0rem] px-[1.25rem] box-border max-w-full m-auto">
                 <section
                     className="w-[64.5rem] flex flex-col items-end justify-start gap-[5.062rem] max-w-full text-left text-[1.25rem] text-black font-inter mq725:gap-[1.25rem] mq1025:gap-[2.5rem]">
-                    <AA total={total}/>
-                    <PostList handlePage={handlePage} data={data}/>
+                    <PostMenu category={category} total={total} categoryHandler={categoryHandler}/>
+                    <PostList data={data}/>
+                    <PostPagination category={category} total={total} fetchData={fetchData} />
                 </section>
             </main>
         </div>

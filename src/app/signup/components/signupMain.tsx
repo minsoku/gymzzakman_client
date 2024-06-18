@@ -30,11 +30,12 @@ export const SignupMain = () => {
         formData.append('email', email);
         formData.append('nickname', nickname);
         formData.append('password', password);
-        formData.append('phone', phone);
+        formData.append('phoneNumber', phone);
         if (file) {
             formData.append('file', file);
         }
         signUp(formData).then((res) => {
+            console.log(res);
             if (res?.message) {
                 setError(res?.message);
             }

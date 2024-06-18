@@ -3,11 +3,9 @@ import {PostData} from "@/app/community/page";
 
 interface PostListProps {
     data: PostData[] | [];
-    handlePage: (value: number) => null;
 }
 
-export const PostList = ( {data, handlePage}: PostListProps) => {
-    console.log(data);
+export const PostList = ( {data}: PostListProps) => {
     return (
         <div className="w-full h-full">
             {
