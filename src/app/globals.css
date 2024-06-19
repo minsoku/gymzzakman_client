@@ -78,3 +78,9 @@ body {
   height: 12px;
   background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png');
 }
+
+
+.slick-center {
+  transform: scale(1.2);
+}
+

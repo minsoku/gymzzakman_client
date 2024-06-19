@@ -1,39 +1,31 @@
-import {useCallback} from "react";
 import Link from "next/link";
 
 export const MainButton = () => {
-    const onContainerClick = useCallback(() => {
-        // Please sync "운동시설찾기" to the project
-    }, []);
-
-    const onButtonClick = useCallback(() => {
-        // Please sync "최저가 검색" to the project
-    }, []);
-
     return (
         <div
             className="absolute top-[36.281rem] left-[44.5rem] flex flex-row flex-wrap items-start justify-start pt-[0rem] px-[0rem] pb-[0rem] gap-[0.662rem] z-[2] text-center text-[0.938rem] text-darkgray font-inter">
-            <div className="group hover:text-white">
-                <button
-                    className="rounded-2xl hover:bg-main shadow-[2px_2px_3px_rgba(0,_0,_0,_0.05)] rounded-3xs flex flex-col items-end justify-start pt-[0.875rem] px-[1.5rem] pb-[0.812rem] gap-[0.587rem] cursor-pointer border-[1px] border-solid border-darkgray"
-                    // onClick={onContainerClick}
-                >
-                    <div
-                        className="w-[9.875rem] h-[4.944rem] relative shadow-[2px_2px_3px_rgba(0,_0,_0,_0.05)] rounded-3xs box-border hidden border-[1px] border-solid border-darkgray"/>
-                    <div className="flex flex-row items-start justify-end py-[0rem] pr-[2.543rem] pl-[2.562rem]">
-                        <svg width="27" height="25" viewBox="0 0 27 25" fill="#ffffff"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M13.341 2.11979C15.9002 2.11979 18.3546 3.10146 20.1643 4.84883C21.9739 6.5962 22.9906 8.96614 22.9906 11.4373C22.9906 14.6197 21.1936 17.2245 19.3002 19.0932C18.354 20.0165 17.3218 20.8538 16.2166 21.5944L15.7598 21.8946L15.5454 22.0323L15.1412 22.2808L14.7809 22.493L14.3349 22.7436C14.032 22.91 13.6895 22.9976 13.341 22.9976C12.9925 22.9976 12.65 22.91 12.3471 22.7436L11.9011 22.493L11.3435 22.1617L11.1377 22.0323L10.6981 21.7497C9.5058 20.9705 8.39512 20.0807 7.38184 19.0932C5.48837 17.2235 3.69141 14.6197 3.69141 11.4373C3.69141 8.96614 4.70806 6.5962 6.51771 4.84883C8.32736 3.10146 10.7818 2.11979 13.341 2.11979ZM13.341 8.33146C12.9186 8.33146 12.5003 8.4118 12.1101 8.56788C11.7198 8.72396 11.3652 8.95274 11.0666 9.24114C10.7679 9.52954 10.531 9.87193 10.3693 10.2487C10.2077 10.6256 10.1245 11.0294 10.1245 11.4373C10.1245 11.8452 10.2077 12.249 10.3693 12.6258C10.531 13.0027 10.7679 13.345 11.0666 13.6335C11.3652 13.9219 11.7198 14.1506 12.1101 14.3067C12.5003 14.4628 12.9186 14.5431 13.341 14.5431C14.1941 14.5431 15.0122 14.2159 15.6154 13.6335C16.2186 13.051 16.5575 12.261 16.5575 11.4373C16.5575 10.6136 16.2186 9.8236 15.6154 9.24114C15.0122 8.65868 14.1941 8.33146 13.341 8.33146Z"
-                                className="fill-custom-gray group-hover:fill-custom-hover"/>
-                        </svg>
-                    </div>
-                    <div
-                        className="w-[6.7rem] h-[0.906rem] relative tracking-[-0.05em] leading-[1.125rem] font-medium inline-block shrink-0 z-[1]">
-                        운동시설 찾기
-                    </div>
-                </button>
-            </div>
+            <Link href={'/arround-fitness'}>
+                <div className="group hover:text-white">
+                    <button
+                        className="rounded-2xl hover:bg-main shadow-[2px_2px_3px_rgba(0,_0,_0,_0.05)] rounded-3xs flex flex-col items-end justify-start pt-[0.875rem] px-[1.5rem] pb-[0.812rem] gap-[0.587rem] cursor-pointer border-[1px] border-solid border-darkgray"
+                    >
+                        <div
+                            className="w-[9.875rem] h-[4.944rem] relative shadow-[2px_2px_3px_rgba(0,_0,_0,_0.05)] rounded-3xs box-border hidden border-[1px] border-solid border-darkgray"/>
+                        <div className="flex flex-row items-start justify-end py-[0rem] pr-[2.543rem] pl-[2.562rem]">
+                            <svg width="27" height="25" viewBox="0 0 27 25" fill="#ffffff"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.341 2.11979C15.9002 2.11979 18.3546 3.10146 20.1643 4.84883C21.9739 6.5962 22.9906 8.96614 22.9906 11.4373C22.9906 14.6197 21.1936 17.2245 19.3002 19.0932C18.354 20.0165 17.3218 20.8538 16.2166 21.5944L15.7598 21.8946L15.5454 22.0323L15.1412 22.2808L14.7809 22.493L14.3349 22.7436C14.032 22.91 13.6895 22.9976 13.341 22.9976C12.9925 22.9976 12.65 22.91 12.3471 22.7436L11.9011 22.493L11.3435 22.1617L11.1377 22.0323L10.6981 21.7497C9.5058 20.9705 8.39512 20.0807 7.38184 19.0932C5.48837 17.2235 3.69141 14.6197 3.69141 11.4373C3.69141 8.96614 4.70806 6.5962 6.51771 4.84883C8.32736 3.10146 10.7818 2.11979 13.341 2.11979ZM13.341 8.33146C12.9186 8.33146 12.5003 8.4118 12.1101 8.56788C11.7198 8.72396 11.3652 8.95274 11.0666 9.24114C10.7679 9.52954 10.531 9.87193 10.3693 10.2487C10.2077 10.6256 10.1245 11.0294 10.1245 11.4373C10.1245 11.8452 10.2077 12.249 10.3693 12.6258C10.531 13.0027 10.7679 13.345 11.0666 13.6335C11.3652 13.9219 11.7198 14.1506 12.1101 14.3067C12.5003 14.4628 12.9186 14.5431 13.341 14.5431C14.1941 14.5431 15.0122 14.2159 15.6154 13.6335C16.2186 13.051 16.5575 12.261 16.5575 11.4373C16.5575 10.6136 16.2186 9.8236 15.6154 9.24114C15.0122 8.65868 14.1941 8.33146 13.341 8.33146Z"
+                                    className="fill-custom-gray group-hover:fill-custom-hover"/>
+                            </svg>
+                        </div>
+                        <div
+                            className="w-[6.7rem] h-[0.906rem] relative tracking-[-0.05em] leading-[1.125rem] font-medium inline-block shrink-0 z-[1]">
+                            운동시설 찾기
+                        </div>
+                    </button>
+                </div>
+            </Link>
             <div className="group hover:text-white">
                 <Link href={'/search'}>
                     <button

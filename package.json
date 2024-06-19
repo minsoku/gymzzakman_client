@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/react-slick": "^0.23.13",
     "dayjs": "^1.11.11",
     "next": "14.2.3",
     "next-auth": "^4.24.7",
@@ -16,7 +17,9 @@
     "prop-types": "^15.8.1",
     "react": "^18",
     "react-dom": "^18",
-    "react-kakao-maps-sdk": "^1.1.26"
+    "react-kakao-maps-sdk": "^1.1.26",
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@types/node": "^20",

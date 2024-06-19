@@ -33,11 +33,18 @@ export const Header = () => {
                             최저가 검색
                         </div>
                     </Link>
+                    <Link href={"/arround-fitness"}>
+                        <div
+                            className={"relative tracking-[-0.1em] inline-block min-w-[4.938rem] whitespace-nowrap cursor-pointer" + (pathname === "/arround-fitness" ? " text-main" : "")}
+                        >
+                            운동시설 찾기
+                        </div>
+                    </Link>
                     <Link href={"/recommend"}>
                     <div
                         className={"relative tracking-[-0.1em] inline-block min-w-[4.938rem] whitespace-nowrap cursor-pointer" + (pathname === "/recommend" ? " text-main" : "")}
                     >
-                        운동종목 찾기
+                        관심사 찾기
                     </div>
                     </Link>
                     <Link href={"/community"}>
@@ -47,9 +54,6 @@ export const Header = () => {
                             커뮤니티
                         </div>
                     </Link>
-                    {/*<div className="relative tracking-[-0.1em] inline-block min-w-[3.938rem]">*/}
-                    {/*    마이페이지*/}
-                    {/*</div>*/}
                     {
                         session.data ?
                             <div
