@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 
 export const LoginBottom: NextPage = () => {
 
@@ -25,6 +26,7 @@ export const LoginBottom: NextPage = () => {
                     </div>
                 </div>
             </div>
+            <Link href={"/recommend"}>
             <div className="w-[19.188rem] h-[4.069rem] relative text-[1.563rem] text-darkslategray">
                 <div
                     className="absolute h-[calc(100%_-_1px)] top-[0rem] bottom-[0.063rem] left-[1.063rem] rounded-181xl bg-white w-[17.119rem] z-[1] rounded-full"/>
@@ -34,6 +36,7 @@ export const LoginBottom: NextPage = () => {
                     관심사 설정하러 가기
                 </h2>
             </div>
+            </Link>
             <div className="w-[31.55rem] h-[24.088rem] absolute !m-[0] top-[-6.069rem] right-[9.831rem]">
                 <img
                     className="absolute top-[0rem] left-[0rem] w-full h-full object-contain z-[3]"
