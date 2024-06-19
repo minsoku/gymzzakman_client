@@ -1,7 +1,7 @@
 "use client"
 
-import {AA} from "@/app/search/components/AA";
-import {BB} from "@/app/search/components/BB";
+import {SearchMain} from "@/app/search/components/searchMain";
+import {SearchResultMain} from "@/app/search/components/searchResultMain";
 import {useEffect, useState} from "react";
 import {getFitnessCenter} from "@/app/_lib/getFitnessCenter";
 
@@ -34,13 +34,11 @@ export default function Page() {
 
     const setFilterDataHandler = (data: any, length: number) => {
         if (length < 1) {
-            console.log(1);
             setNodata(true);
             return;
         }
         setFilterData(data);
     }
-
     return (
         <div
             className="w-full relative bg-white overflow-hidden flex flex-col items-start justify-start gap-[0.062rem] leading-[normal] tracking-[normal]">
@@ -57,8 +55,9 @@ export default function Page() {
                     </div>
                 </div>
                 {(filterData.length < 1 && noData === false) &&
-                    <AA data={data} setFilterDataHandler={setFilterDataHandler}/>}
-                {(filterData.length > 0 && noData === false)  && <BB data={filterData}/>}
+                    <SearchMain data={data} setFilterDataHandler={setFilterDataHandler}/>}
+                {(filterData.length > 0 && noData === false) && filterData.map((data:any, index: number) => (
+                    <SearchResultMain key={index} data={data}/>))}
                 {noData && <div className="h-screen bg-white">검색 결과가 없습니다.</div>}
             </main>
         </div>

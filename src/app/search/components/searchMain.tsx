@@ -7,7 +7,7 @@ import {Price} from "@/app/search/components/price";
 import {Exercise} from "@/app/search/components/exercise";
 import {getFitnessCenter} from "@/app/_lib/getFitnessFilter";
 
-export const AA = ({data, setFilterDataHandler}: any) => {
+export const SearchMain = ({data, setFilterDataHandler}: any) => {
     const [type, setType] = useState<string>("location");
     const [inputLocationValue, setInputLocationValue] = useState<string>("");
     const [inputPriceValue, setInputPriceValue] = useState<any>({

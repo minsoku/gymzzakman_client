@@ -47,8 +47,7 @@ export default function Page() {
         setFiles([...files, ...newFiles]);
     };
 
-    const postContent = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const postContent = async () => {
         if (title.trim() === '') {
             alert('제목을 입력해주세요.');
             return;
@@ -64,7 +63,6 @@ export default function Page() {
         formData.append("lat", position.latitude.toString());
         formData.append("lng", position.longitude.toString());
         formData.append("category", category);
-        console.log(formData)
         hashtags.forEach((hashtag) => {
             formData.append('hashtags', hashtag);
         });
@@ -127,7 +125,7 @@ export default function Page() {
     }, []);
     return (
         <div className="w-full h-screen bg-white">
-            <form className="w-4/5 h-full m-auto border-[1px]" onSubmit={postContent}>
+            <div className="w-4/5 h-full m-auto border-[1px]">
                 <div className="h-full pt-5 w-5/6 m-auto ">
                     <div className="h-full flex flex-col">
                         <div className="flex">
@@ -228,11 +226,12 @@ export default function Page() {
                         <textarea className="w-full h-3/5 p-2 rounded border resize-none" name="content"
                                   onChange={onChangeContent}/>
                         <button
+                            onClick={postContent}
                             className="h-10 w-1/2 bg-main text-white mt-10 m-auto">등록하기
                         </button>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     )
 }

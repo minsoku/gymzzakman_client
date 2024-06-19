@@ -47,9 +47,9 @@ export const Header = () => {
                             커뮤니티
                         </div>
                     </Link>
-                    <div className="relative tracking-[-0.1em] inline-block min-w-[3.938rem]">
-                        마이페이지
-                    </div>
+                    {/*<div className="relative tracking-[-0.1em] inline-block min-w-[3.938rem]">*/}
+                    {/*    마이페이지*/}
+                    {/*</div>*/}
                     {
                         session.data ?
                             <div
