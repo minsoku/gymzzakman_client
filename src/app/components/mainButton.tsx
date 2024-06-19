@@ -4,7 +4,7 @@ export const MainButton = () => {
     return (
         <div
             className="absolute top-[36.281rem] left-[44.5rem] flex flex-row flex-wrap items-start justify-start pt-[0rem] px-[0rem] pb-[0rem] gap-[0.662rem] z-[2] text-center text-[0.938rem] text-darkgray font-inter">
-            <Link href={'/arround-fitness'}>
+            <Link href={'/recommend'}>
                 <div className="group hover:text-white">
                     <button
                         className="rounded-2xl hover:bg-main shadow-[2px_2px_3px_rgba(0,_0,_0,_0.05)] rounded-3xs flex flex-col items-end justify-start pt-[0.875rem] px-[1.5rem] pb-[0.812rem] gap-[0.587rem] cursor-pointer border-[1px] border-solid border-darkgray"
@@ -21,7 +21,7 @@ export const MainButton = () => {
                         </div>
                         <div
                             className="w-[6.7rem] h-[0.906rem] relative tracking-[-0.05em] leading-[1.125rem] font-medium inline-block shrink-0 z-[1]">
-                            운동시설 찾기
+                            운동종목 찾기
                         </div>
                     </button>
                 </div>

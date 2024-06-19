@@ -13,6 +13,13 @@ const config: Config = {
   },
   theme: {
     extend: {
+      zIndex: {
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        '5': '5',
+      },
       fill: {
         'custom-gray': '#9A9A9A',
         'custom-hover': '#FFFFFF',

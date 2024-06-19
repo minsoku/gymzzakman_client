@@ -20,7 +20,6 @@ export default function Page() {
         redirect('/community')
     }
     const [files, setFiles] = useState<File[]>([]);
-    const [title, setTitle] = useState<string>('');
     const [content, setContent] = useState<string>('');
     const [position, setPosition] = useState<Position>({latitude: '', longitude: ''});
     const [category, setCategory] = useState<string>('INFORMATION')
@@ -48,17 +47,12 @@ export default function Page() {
     };
 
     const postContent = async () => {
-        if (title.trim() === '') {
-            alert('제목을 입력해주세요.');
-            return;
-        }
         if (content.trim() === '') {
             alert('내용을 입력해주세요.');
             return;
         }
 
         const formData = new FormData();
-        formData.append("title", title);
         formData.append("content", content);
         formData.append("lat", position.latitude.toString());
         formData.append("lng", position.longitude.toString());
@@ -76,9 +70,6 @@ export default function Page() {
         }
     }
 
-    const onChangeTitle: ChangeEventHandler<HTMLInputElement> = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.target.value);
-    }
     const onChangeContent: ChangeEventHandler<HTMLTextAreaElement> = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setContent(e.target.value);
     }
@@ -129,10 +120,6 @@ export default function Page() {
                 <div className="h-full pt-5 w-5/6 m-auto ">
                     <div className="h-full flex flex-col">
                         <div className="flex">
-                            <input
-                                className="w-1/2 text-lg border-2 p-1.5"
-                                placeholder="제목을 입력해주세요." name="title" type="text"
-                                onChange={onChangeTitle}/>
                             <button
                                 className={`m-auto w-1/12 h-8 hover:text-white hover:bg-main rounded-3xl cursor-pointer border-[1px] border-gray-400 ${
                                     category === "INFORMATION" ? "text-white bg-main" : "bg-white text-black"
@@ -179,18 +166,6 @@ export default function Page() {
                             </button>
                         </div>
                         <span className="flex mt-2">
-                            <div className="mb-4 w-1/2">
-                                    <div className="flex">
-                                        <div className="flex text-sm text-gray-600">
-                                            <label htmlFor="files"
-                                                   className="cursor-pointer text-green-500 hover:text-main">이미지 업로드 <b
-                                                className="text-gray-500">(PNG, JPG만 최대 3개까지 가능합니다.)</b>
-                                            </label>
-                                            <input className="sr-only" id="files" name="files" type="file"
-                                                   onChange={handleFileChange}/>
-                                        </div>
-                                    </div>
-                            </div>
                             <div className="mb-4 w-1/2 flex">
                                 <input
                                     type="text"

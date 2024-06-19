@@ -57,7 +57,7 @@ export const Chapter = ({chapter, chapterChange, chapterList}: Iprops) => {
                             className="relative text-lg w-1/3 h-16 border-[1px] hover:bg-main hover:text-white rounded-xl"
                             onClick={() => chapterChange(chapter + 1)}
                         >
-                            체형 교정
+                            {chapterList[chapter - 1]?.button3}
                             <img className="w-4 absolute right-10 bottom-7"
                                  src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/check_image.png"
                                  alt={"check_image"}/>

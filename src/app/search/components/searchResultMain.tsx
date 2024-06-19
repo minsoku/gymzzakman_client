@@ -53,6 +53,7 @@ export const SearchResultMain = ({data}: any) => {
                 className="flex items-center h-full">
                 <div className="">
                     <img
+                        loading="lazy"
                         className="w-72 h-40 p-4 rounded-3xl"
                         src={data.fitnessCenter.profileImage}
                         alt={data.fitnessCenter.name}
