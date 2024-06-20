@@ -28,19 +28,8 @@ export default function Page() {
                 {
                     status === "loading" ? <div/> : session ?
                         <>
-                            <Link href={"/login"}>
-                                <div
-                                    className="absolute top-[42.969rem] left-[56.063rem] tracking-[-0.07em] inline-block min-w-[2rem] cursor-pointer z-[2]"
-                                >
-                                    마이페이지
-                                </div>
-                            </Link>
                             <div
-                                className="absolute top-[42.969rem] left-[59.5rem] tracking-[-0.07em] z-[2]">
-                                ㅣ
-                            </div>
-                            <div
-                                className="absolute top-[42.969rem] left-[60.688rem] tracking-[-0.07em] inline-block min-w-[2.625rem] cursor-pointer z-[2]"
+                                className="absolute top-[42.969rem] left-[58.8rem] tracking-[-0.07em] inline-block min-w-[2.625rem] cursor-pointer z-[2]"
                                 onClick={() => signOut()}
                             >
                                 로그아웃

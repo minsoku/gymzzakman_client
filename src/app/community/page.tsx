@@ -7,6 +7,16 @@ import {getPaginatePost} from "@/app/_lib/getPaginatePost";
 import PostPagination from "@/app/community/components/postPagination";
 
 export interface PostData {
+    comments: {
+        author: {
+            profileImage: string;
+            nickname: string;
+        };
+        content: string;
+        createdAt: string;
+        id: number;
+        updatedAt: string;
+    }[];
     author: {
         id: number;
         nickname: string;
@@ -73,7 +83,7 @@ export default function Page() {
                     className="w-[64.5rem] flex flex-col items-end justify-start gap-[5.062rem] max-w-full text-left text-[1.25rem] text-black font-inter mq725:gap-[1.25rem] mq1025:gap-[2.5rem]">
                     <PostMenu category={category} total={total} categoryHandler={categoryHandler}
                               searchHandler={searchHandler} fetchData={fetchData} />
-                    <PostList data={data}/>
+                    <PostList data={data} fetchData={fetchData}/>
                     <PostPagination total={total} category={category} fetchData={fetchData}/>
                 </section>
             </main>

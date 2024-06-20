@@ -107,12 +107,18 @@ export const PostMenu = ({category, total, categoryHandler, searchHandler, fetch
                               fill="#C2C2C2"
                         />
                     </svg>
-                    <button
-                        onClick={popUpHandler}
-                        className="bg-gray-400 text-white hover:bg-main rounded-3xl cursor-pointer [border:none] pt-[0.687rem] pb-[0.625rem] pr-[2.687rem] pl-[2.75rem] flex flex-row items-start justify-start whitespace-nowrap font-semibold">
-                        게시글 등록
-                    </button>
-                    {popup && <NewPostPopUp popUpHandler={popUpHandler}/>}
+                    {
+                        session.status === "authenticated" ? <button
+                                onClick={popUpHandler}
+                                className="bg-gray-400 text-white hover:bg-main rounded-3xl cursor-pointer [border:none] pt-[0.687rem] pb-[0.625rem] pr-[2.687rem] pl-[2.75rem] flex flex-row items-start justify-start whitespace-nowrap font-semibold">
+                                게시글 등록
+                            </button> :
+                            <button
+                                className="bg-gray-400 text-white rounded-3xl cursor-pointer [border:none] pt-[0.687rem] pb-[0.625rem] pr-[2.687rem] pl-[2.75rem] flex flex-row items-start justify-start whitespace-nowrap font-semibold">
+                                게시글 등록
+                            </button>
+                    }
+                    {popup && <NewPostPopUp popUpHandler={popUpHandler} search={search}/>}
                 </div>
             </div>
         </div>

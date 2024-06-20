@@ -14,6 +14,7 @@ interface Position {
 
 export default function Page() {
     const session = useSession();
+    const title = "title";
     const router = useRouter()
 
     if (!session.data) {
@@ -53,6 +54,7 @@ export default function Page() {
         }
 
         const formData = new FormData();
+        formData.append("title", title);
         formData.append("content", content);
         formData.append("lat", position.latitude.toString());
         formData.append("lng", position.longitude.toString());

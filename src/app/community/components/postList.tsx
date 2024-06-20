@@ -3,14 +3,15 @@ import {PostData} from "@/app/community/page";
 
 interface PostListProps {
     data: PostData[] | [];
+    fetchData: (page: number, categoryValue: string) => void;
 }
 
-export const PostList = ( {data}: PostListProps) => {
+export const PostList = ( {data, fetchData}: PostListProps) => {
     return (
         <div className="w-full h-full">
             {
                 data?.map((post: PostData, key: number) => (
-                    <PostListMain key={key} post={post} />
+                    <PostListMain key={key} post={post} fetchData={fetchData} />
                 ))
             }
         </div>

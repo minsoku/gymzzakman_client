@@ -8,14 +8,14 @@ interface Position {
     longitude: string;
 };
 
-export const NewPostPopUp = ({popUpHandler}: any) => {
+export const NewPostPopUp = ({popUpHandler, search}: any) => {
     const session: any = useSession()
     const [content, setContent] = useState<string>('');
     const [position, setPosition] = useState<Position>({latitude: '', longitude: ''});
     const [category, setCategory] = useState<string>('INFORMATION')
     const [hashtags, setHashtags] = useState<string[]>([]);
     const [newHashtag, setNewHashtag] = useState('');
-    const options = ['FAQ', 'AMITY', 'CERTIFICATIONS', "INFORMATION"];
+    const options = ['FAQ', 'AMITY', 'CERTIFICATIONS'];
 
     const postContent = async () => {
         if (content.trim() === '') {
@@ -25,6 +25,7 @@ export const NewPostPopUp = ({popUpHandler}: any) => {
 
         const formData = new FormData();
         formData.append("content", content);
+        formData.append("title", "title");
         formData.append("lat", position.latitude.toString());
         formData.append("lng", position.longitude.toString());
         formData.append("category", category);
@@ -35,6 +36,7 @@ export const NewPostPopUp = ({popUpHandler}: any) => {
         const result = await serverNewPost(formData);
         if (result.success) {
             alert('게시물이 등록되었습니다.')
+            search();
             popUpHandler();
         }
     }
@@ -105,7 +107,7 @@ export const NewPostPopUp = ({popUpHandler}: any) => {
                             </div>
                             <select onChange={onChangeCategory}
                                     className="h-10 relative border-[1px] border-gray-400 right-0">
-                                <option value="">카테고리 선택</option>
+                                <option value="INFORMATION">정보공유</option>
                                 {options.map((option, index) => (
                                     <option key={index} value={option}>
                                         {categoryObj[option as keyof CategoryType]}
@@ -144,7 +146,9 @@ export const NewPostPopUp = ({popUpHandler}: any) => {
                                 </div>
                             ))}
                         </div>
-                        <button className="absolute right-5 w-32 h-14 bg-main rounded-xl text-white mt-2">
+                        <button
+                            onClick={postContent}
+                            className="absolute right-5 w-32 h-14 bg-main rounded-xl text-white mt-2">
                             등록하기
                         </button>
                     </div>
