@@ -125,7 +125,7 @@ export const NewPostPopUp = ({popUpHandler, search}: any) => {
                         <div className="flex mt-4">
                             <input
                                 type="text"
-                                className="w-32 border-[1px] border-black pl-1"
+                                className="w-36 border-[1px] border-black pl-1"
                                 placeholder="해시태그 입력"
                                 value={newHashtag}
                                 onChange={handleHashtagInput}
