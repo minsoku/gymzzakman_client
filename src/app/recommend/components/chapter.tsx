@@ -1,6 +1,6 @@
 interface Iprops {
     chapter: number;
-    chapterChange: (chapter: number) => void;
+    chapterChange: (chapter: number, value: string) => void;
     chapterList: {
         blueText: string;
         text: string;
@@ -11,6 +11,7 @@ interface Iprops {
 }
 
 export const Chapter = ({chapter, chapterChange, chapterList}: Iprops) => {
+    console.log()
     return (
         <div className="h-screen bg-gray-100">
             <div className="pt-40"/>
@@ -36,7 +37,7 @@ export const Chapter = ({chapter, chapterChange, chapterList}: Iprops) => {
                 <span className="w-4/5 m-auto flex justify-between">
                     <button
                         className={`relative text-lg h-16 border-[1px] mr-4 hover:bg-main hover:text-white rounded-xl ${(chapterList[chapter - 1].button3 ? "w-1/3" : "w-1/2")}`}
-                        onClick={() => chapterChange(chapter + 1)}
+                        onClick={() => chapterChange(chapter + 1, chapterList[chapter - 1]?.button1)}
                     >
                         {chapterList[chapter - 1]?.button1}
                         <img className="w-4 absolute right-10 bottom-7"
@@ -45,7 +46,7 @@ export const Chapter = ({chapter, chapterChange, chapterList}: Iprops) => {
                     </button>
                     <button
                         className={`relative text-lg h-16 border-[1px] mr-4 hover:bg-main hover:text-white rounded-xl ${(chapterList[chapter - 1].button3 ? "w-1/3" : "w-1/2")}`}
-                        onClick={() => chapterChange(chapter + 1)}
+                        onClick={() => chapterChange(chapter + 1, chapterList[chapter - 1]?.button2)}
                     >
                         {chapterList[chapter - 1]?.button2}
                         <img className="w-4 absolute right-10 bottom-7"
@@ -55,7 +56,7 @@ export const Chapter = ({chapter, chapterChange, chapterList}: Iprops) => {
                     {chapterList[chapter - 1]?.button3 &&
                         <button
                             className="relative text-lg w-1/3 h-16 border-[1px] hover:bg-main hover:text-white rounded-xl"
-                            onClick={() => chapterChange(chapter + 1)}
+                            onClick={() => chapterChange(chapter + 1, chapterList[chapter - 1]?.button3 || '')}
                         >
                             {chapterList[chapter - 1]?.button3}
                             <img className="w-4 absolute right-10 bottom-7"
