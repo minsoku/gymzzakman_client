@@ -77,9 +77,9 @@ export const SearchResultMain = ({data}: any) => {
                             className="flex absolute right-3 bottom-0">
                             <div
                                 className="">
-                                <span className="font-semibold text-3xl text-gray-500">{data.month}개월</span>
+                                <span className="font-semibold text-2xl text-gray-500">{data.month}개월</span>
                                 {" "}
-                                <b className="text-red-500 text-3xl">
+                                <b className="text-red-500 text-2xl">
                                     <span> {data.price / 10000}만원</span>
                                 </b>
                             </div>
