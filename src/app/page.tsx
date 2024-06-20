@@ -6,9 +6,6 @@ import {MainButton} from "@/app/components/mainButton";
 
 export default function Page() {
     const {data: session, status} = useSession();
-    console.log(process.env.NEXT_PUBLIC_INTERNAL)
-    console.log(process.env.NEXT_PUBLIC_URL)
-    console.log(session)
     return (
         <div
             className="text-[#9A9A9A] w-full h-full relative bg-whitesmoke overflow-hidden flex flex-row items-start justify-start gap-[0.625rem] leading-[normal] tracking-[normal] text-center text-[1.25rem] font-inter mq675:h-auto">

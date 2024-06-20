@@ -11,7 +11,6 @@ interface Iprops {
 }
 
 export const Chapter = ({chapter, chapterChange, chapterList}: Iprops) => {
-    console.log()
     return (
         <div className="h-screen bg-gray-100">
             <div className="pt-40"/>
