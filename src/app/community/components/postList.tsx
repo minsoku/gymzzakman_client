@@ -8,7 +8,7 @@ interface PostListProps {
 
 export const PostList = ( {data, fetchData}: PostListProps) => {
     return (
-        <div className="w-full h-full">
+        <div className="w-full h-screen">
             {
                 data?.map((post: PostData, key: number) => (
                     <PostListMain key={key} post={post} fetchData={fetchData} />

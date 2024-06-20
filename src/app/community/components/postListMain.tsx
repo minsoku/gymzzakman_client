@@ -94,7 +94,6 @@ export const PostListMain = ({post, fetchData}: IPostData) => {
                                 <p className="ml-6">{item.content}</p>
                             </div>
                         ))
-
                         }
                         <textarea onChange={commentHandler}
                                   value={comment}
