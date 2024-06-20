@@ -29,7 +29,6 @@ export const PostMenu = ({category, total, categoryHandler, searchHandler, fetch
             <div
                 className="w-[63.75rem] flex flex-row items-start justify-center py-[0rem] px-[1.25rem] box-border max-w-full">
                 <div className="flex flex-row items-start justify-start gap-[0.625rem]">
-                    <div className="flex flex-col items-start justify-start pt-[0.25rem] px-[0rem] pb-[0rem]"/>
                     <h1 className="m-0 relative text-inherit tracking-[-0.05em] font-bold font-inherit mq450:text-[1.688rem] mq975:text-[2.25rem]">
                         커뮤니티
                     </h1>
@@ -40,41 +39,41 @@ export const PostMenu = ({category, total, categoryHandler, searchHandler, fetch
                 <div className="flex flex-row items-start justify-center gap-[0.625rem] max-w-full mq975:flex-wrap">
                     <button
                         onClick={() => categoryHandler("")}
-                        className={`hover:text-white hover:bg-main rounded-3xl cursor-pointer pt-[0.562rem] px-[3.562rem] pb-[0.5rem] flex flex-row items-start justify-start border-[1px] border-solid hover:box-border hover:border-[1px] hover:border-solid ${(category === "" ? "bg-main text-white" : "bg-white text-black")}`}>
+                        className={`hover:text-white hover:bg-main rounded-3xl cursor-pointer pt-[0.562rem] pb-[0.5rem] flex flex-row items-start justify-start border-[1px] border-solid hover:box-border hover:border-[1px] hover:border-solid ${(category === "" ? "bg-main text-white" : "bg-white text-black")}`}>
                         <div
-                            className="w-[4.438rem] relative text-[1.25rem] tracking-[-0.05em] font-semibold font-inter text text-center inline-block min-w-[4.438rem] z-[1] mq450:text-[1rem]">
+                            className="w-44 relative text-[1.25rem] tracking-[-0.05em] font-semibold font-inter text text-center inline-block min-w-[4.438rem] z-[1] mq450:text-[1rem]">
                             전체
                         </div>
                     </button>
                     <button
                         onClick={() => categoryHandler("CERTIFICATIONS")}
-                        className={`hover:text-white hover:bg-main rounded-3xl cursor-pointer pt-[0.562rem] px-[3.5rem] pb-[0.5rem] flex flex-row items-start justify-start border-[1px] border-solid border-darkgray hover:bg-gainsboro-100 hover:box-border hover:border-[1px] hover:border-solid ${(category === "CERTIFICATIONS" ? "bg-main text-white" : "bg-white text-black")}`}>
+                        className={`hover:text-white hover:bg-main rounded-3xl cursor-pointer pt-[0.562rem] pb-[0.5rem] flex flex-row items-start justify-start border-[1px] border-solid border-darkgray hover:bg-gainsboro-100 hover:box-border hover:border-[1px] hover:border-solid ${(category === "CERTIFICATIONS" ? "bg-main text-white" : "bg-white text-black")}`}>
                         <div
-                            className="w-[4.438rem] relative text-[1.25rem] tracking-[-0.05em] font-semibold font-inter text text-center inline-block min-w-[4.438rem] z-[1] mq450:text-[1rem]">
+                            className="w-44 relative text-lg tracking-[-0.05em] font-semibold font-inter text-center inline-block min-w-[4.438rem] z-[1]">
                             운동 인증
                         </div>
                     </button>
                     <button
                         onClick={() => categoryHandler("FAQ")}
-                        className={`hover:text-white hover:bg-main rounded-3xl cursor-pointer pt-[0.562rem] px-[3.5rem] pb-[0.5rem] flex flex-row items-start justify-start border-[1px] border-solid border-darkgray hover:bg-gainsboro-100 hover:box-border hover:border-[1px] hover:border-solid ${(category === "FAQ" ? "bg-main text-white" : "bg-white text-black")}`}>
+                        className={`hover:text-white hover:bg-main rounded-3xl cursor-pointer pt-[0.562rem] pb-[0.5rem] flex flex-row items-start justify-start border-[1px] border-solid border-darkgray hover:bg-gainsboro-100 hover:box-border hover:border-[1px] hover:border-solid ${(category === "FAQ" ? "bg-main text-white" : "bg-white text-black")}`}>
                         <div
-                            className="w-[4.438rem] relative text-[1.25rem] tracking-[-0.05em] font-semibold font-inter text text-center inline-block min-w-[4.438rem] z-[1] mq450:text-[1rem]">
+                            className="w-44 relative text-[1.25rem] tracking-[-0.05em] font-semibold font-inter text text-center inline-block min-w-[4.438rem] z-[1] mq450:text-[1rem]">
                             FAQ
                         </div>
                     </button>
                     <button
                         onClick={() => categoryHandler("INFORMATION")}
-                        className={`hover:text-white hover:bg-main rounded-3xl cursor-pointer pt-[0.562rem] px-[3.5rem] pb-[0.5rem] flex flex-row items-start justify-start border-[1px] border-solid border-darkgray hover:bg-gainsboro-100 hover:box-border hover:border-[1px] hover:border-solid ${(category === "INFORMATION" ? "bg-main text-white" : "bg-white text-black")}`}>
+                        className={`hover:text-white hover:bg-main rounded-3xl cursor-pointer pt-[0.562rem] pb-[0.5rem] flex flex-row items-start justify-start border-[1px] border-solid border-darkgray hover:bg-gainsboro-100 hover:box-border hover:border-[1px] hover:border-solid ${(category === "INFORMATION" ? "bg-main text-white" : "bg-white text-black")}`}>
                         <div
-                            className="w-[4.438rem] relative text-[1.25rem] tracking-[-0.05em] font-semibold font-inter text text-center inline-block min-w-[4.438rem] z-[1] mq450:text-[1rem]">
+                            className="w-44 relative text-[1.25rem] tracking-[-0.05em] font-semibold font-inter text text-center inline-block min-w-[4.438rem] z-[1] mq450:text-[1rem]">
                             정보 공유
                         </div>
                     </button>
                     <button
                         onClick={() => categoryHandler("AMITY")}
-                        className={`hover:text-white hover:bg-main rounded-3xl cursor-pointer pt-[0.562rem] px-[3.5rem] pb-[0.5rem] flex flex-row items-start justify-start border-[1px] border-solid border-darkgray hover:bg-gainsboro-100 hover:box-border hover:border-[1px] hover:border-solid ${(category === "AMITY" ? "bg-main text-white" : "bg-white text-black")}`}>
+                        className={`hover:text-white hover:bg-main rounded-3xl cursor-pointer pt-[0.562rem] pb-[0.5rem] flex flex-row items-start justify-start border-[1px] border-solid border-darkgray hover:bg-gainsboro-100 hover:box-border hover:border-[1px] hover:border-solid ${(category === "AMITY" ? "bg-main text-white" : "bg-white text-black")}`}>
                         <div
-                            className="w-[4.438rem] relative text-[1.25rem] tracking-[-0.05em] font-semibold font-inter text text-center inline-block min-w-[4.438rem] z-[1] mq450:text-[1rem]">
+                            className="w-44 relative text-[1.25rem] tracking-[-0.05em] font-semibold font-inter text text-center inline-block min-w-[4.438rem] z-[1] mq450:text-[1rem]">
                             우리 동네
                         </div>
                     </button>
