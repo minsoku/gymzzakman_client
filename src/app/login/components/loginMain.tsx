@@ -106,6 +106,7 @@ export const LoginMain: NextPage = () => {
             className="m-0 w-[42.938rem] flex flex-col items-start justify-start gap-[2.706rem] max-w-full mq700:gap-[1.375rem]">
             <div className="self-stretch flex flex-col items-start justify-start gap-[1.437rem] max-w-full">
                 {state.isLoading && (
+                    <div className="h-screen bg-white">
                     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
                         <div className="bg-white p-8 rounded-lg shadow-lg">
                             <div className="flex items-center justify-center">
@@ -113,6 +114,7 @@ export const LoginMain: NextPage = () => {
                                 <span className="ml-4 text-blue-500 font-bold text-lg">로딩중</span>
                             </div>
                         </div>
+                    </div>
                     </div>
                 )}
                 <div className="self-stretch flex flex-col items-start justify-start gap-[1.125rem] max-w-full">

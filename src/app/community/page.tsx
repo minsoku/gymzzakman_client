@@ -1,6 +1,6 @@
 "use client"
 
-import {ChangeEvent, useEffect, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import {PostMenu} from "@/app/community/components/postMenu";
 import {PostList} from "@/app/community/components/postList";
 import {getPaginatePost} from "@/app/_lib/getPaginatePost";
@@ -71,9 +71,21 @@ export default function Page() {
     useEffect(() => {
         fetchData(1, "");
     }, [])
-
     if (error) return <div className="h-screen bg-white">에러 발생</div>
-    if (loading) return <div className="h-screen bg-white">로딩중...</div>
+    if (loading) return (
+        <div className="h-screen bg-white">
+            <div
+                className="h-screen fixed top-0 left-0 w-full bg-black bg-opacity-50 flex justify-center items-center z-50">
+                <div className="bg-white p-8 rounded-lg shadow-lg">
+                    <div className="flex items-center justify-center">
+                        <div
+                            className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
+                        <span className="ml-4 text-blue-500 font-bold text-lg">로딩중</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
     return (
         <div
             className="w-full relative bg-white overflow-hidden flex flex-col items-start justify-start pt-[0rem] px-[0rem] pb-[3.312rem] box-border gap-[9.375rem] leading-[normal] tracking-[normal] text-center text-[1.25rem] text-cornflowerblue-100 font-inter mq450:gap-[2.313rem] mq725:gap-[4.688rem]">
@@ -82,7 +94,7 @@ export default function Page() {
                 <section
                     className="w-[64.5rem] flex flex-col items-end justify-start gap-[5.062rem] max-w-full text-left text-[1.25rem] text-black font-inter mq725:gap-[1.25rem] mq1025:gap-[2.5rem]">
                     <PostMenu category={category} total={total} categoryHandler={categoryHandler}
-                              searchHandler={searchHandler} fetchData={fetchData} />
+                              searchHandler={searchHandler} fetchData={fetchData}/>
                     <PostList data={data} fetchData={fetchData}/>
                     <PostPagination total={total} category={category} fetchData={fetchData}/>
                 </section>
