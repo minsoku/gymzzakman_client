@@ -8,74 +8,113 @@ import {redirect} from "next/navigation";
 import errorCodes from "@/app/const/errorcodes";
 
 export const LoginMain: NextPage = () => {
-    const [password, setPassword] = useState<string>("");
-    const [email, setEmail] = useState<string>("");
-    const [errorMessage, setErrorMessage] = useState<string | null>(null);
-    const [idChecked, setIdChecked] = useState<boolean>(false);
+    const [state, setState] = useState<any>({
+        email: "",
+        password: "",
+        errorMessage: null,
+        idChecked: false,
+        isLoading: false,
+    });
 
     useEffect(() => {
         if (localStorage.getItem("saveId")) {
-            setEmail(localStorage.getItem("saveId") || "");
-            setIdChecked(true);
+            setState((prevState: any) => ({
+                ...prevState,
+                email: localStorage.getItem("saveId") || "",
+                idChecked: true,
+            }));
         }
     }, []);
 
     const onChangeField: ChangeEventHandler<HTMLInputElement> = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        if (name === 'email') {
-            setEmail(value);
-        } else if (name === 'password') {
-            setPassword(value);
-        }
-
-        setErrorMessage('');
-    }
+        setState((prevState: any) => ({
+            ...prevState,
+            [name]: value,
+            errorMessage: "",
+        }));
+    };
 
     const onChangeSaveId: ChangeEventHandler<HTMLInputElement> = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setIdChecked(e.target.checked);
+        setState((prevState: any) => ({
+            ...prevState,
+            idChecked: e.target.checked,
+        }));
         if (!e.target.checked) {
             localStorage.removeItem("saveId");
         }
-    }
+    };
+
     const onSubmit: FormEventHandler<HTMLFormElement> = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const username = e.currentTarget.email.value;
-        const password = e.currentTarget.password.value
-        let reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/
-        if (!username || !password) {
-            setErrorMessage("아이디 또는 비밀번호를 입력해주세요.");
+        setState((prevState: any) => ({
+            ...prevState,
+            isLoading: true,
+        }));
+
+        const { email, password } = state;
+        let reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
+        if (!email || !password) {
+            setState((prevState: any) => ({
+                ...prevState,
+                errorMessage: "아이디 또는 비밀번호를 입력해주세요.",
+                isLoading: false,
+            }));
             return;
         }
         if (!reg.test(password)) {
-            setErrorMessage("비밀번호는 영문, 숫자, 특수문자를 포함한 8자 이상 15자 이하로 입력해주세요.");
+            setState((prevState: any) => ({
+                ...prevState,
+                errorMessage: "비밀번호는 영문, 숫자, 특수문자를 포함한 8자 이상 15자 이하로 입력해주세요.",
+                isLoading: false,
+            }));
             return;
         }
+
         try {
             await signIn("credentials", {
-                username,
+                username: email,
                 password,
                 redirect: false,
             }).then((res) => {
+                setState((prevState: any) => ({
+                    ...prevState,
+                    isLoading: false,
+                }));
                 if (!res?.error && res?.ok) {
-                    if (idChecked){
-                        localStorage.setItem("saveId", username);
+                    if (state.idChecked) {
+                        localStorage.setItem("saveId", email);
                     }
-                    redirect('/');
+                    redirect("/");
                 } else if (res?.error) {
-                    setErrorMessage(errorCodes[res.error]);
-                    setEmail("");
-                    setPassword("");
+                    setState((prevState: any) => ({
+                        ...prevState,
+                        errorMessage: res.error ? errorCodes[res.error] : 'Unknown error',
+                        email: localStorage.getItem("saveId") || "",
+                        password: "",
+                    }));
                 }
-            })
+            });
         } catch (e) {
             console.log(e);
         }
     };
+
     return (
         <form
             onSubmit={onSubmit}
             className="m-0 w-[42.938rem] flex flex-col items-start justify-start gap-[2.706rem] max-w-full mq700:gap-[1.375rem]">
             <div className="self-stretch flex flex-col items-start justify-start gap-[1.437rem] max-w-full">
+                {state.isLoading && (
+                    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
+                        <div className="bg-white p-8 rounded-lg shadow-lg">
+                            <div className="flex items-center justify-center">
+                                <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
+                                <span className="ml-4 text-blue-500 font-bold text-lg">로딩중</span>
+                            </div>
+                        </div>
+                    </div>
+                )}
                 <div className="self-stretch flex flex-col items-start justify-start gap-[1.125rem] max-w-full">
                     <div
                         className="self-stretch rounded-3xs bg-white box-border flex flex-row items-start justify-start py-[2.062rem] px-[2.125rem] gap-[1.25rem] max-w-full z-[1] border-[1px] border-solid border-lightgray">
@@ -91,7 +130,7 @@ export const LoginMain: NextPage = () => {
                             placeholder="아이디 입력"
                             name="email"
                             type="email"
-                            value={email}
+                            value={state.email}
                             onChange={onChangeField}
                         />
                     </div>
@@ -109,19 +148,19 @@ export const LoginMain: NextPage = () => {
                             placeholder="비밀번호 입력"
                             name="password"
                             type="password"
-                            value={password}
+                            value={state.password}
                             onChange={onChangeField}
                         />
                     </div>
                 </div>
-                {errorMessage &&
+                {state.errorMessage &&
                     <div className="text-red-500 text-xs font-semibold">
-                        {errorMessage}
+                        {state.errorMessage}
                     </div>
                 }
                 <div className="w-[14.5rem] flex flex-row items-start justify-start py-[0rem] px-[0.5rem] box-border">
                     <div className="flex-1 flex flex-row items-start justify-start gap-[0.5rem]">
-                        <input type="checkbox" onChange={onChangeSaveId} checked={idChecked}/>
+                        <input type="checkbox" onChange={onChangeSaveId} checked={state.idChecked}/>
                         <div
                             className="flex-1 relative text-[0.938rem] tracking-[-0.05em] font-medium font-inter text-black text-left z-[1]">
                             아이디 저장
