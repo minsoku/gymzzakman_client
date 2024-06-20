@@ -2,7 +2,7 @@
 
 export const getPaginatePost = async (page: number, category: string, search?: string) => {
     try {
-        const response = await fetch(`${process.env.NEST_SERVER}/posts?page=${page}&category=${category}&search=${search}`, {
+        const response = await fetch(`http://3.35.38.73:3000/posts?page=${page}&category=${category}&search=${search}`, {
             method: 'get',
             credentials: 'include',
         })

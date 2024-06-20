@@ -15,7 +15,7 @@ export const authOptions: NextAuthOptions = {
             },
             async authorize(credentials, req): Promise<any> {
                 const basicToken = Buffer.from(`${credentials?.username}:${credentials?.password}`).toString('base64');
-                const authResponse = await fetch(`${process.env.NEST_SERVER}/auth/login/email`, {
+                const authResponse = await fetch(`http://3.35.38.73:3000/auth/login/email`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

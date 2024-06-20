@@ -9,7 +9,7 @@ export const serverNewPost = async (formData: FormData) => {
     let bearer = session?.user?.accessToken;
 
     try {
-        const response = await fetch(`${process.env.NEST_SERVER}/posts`, {
+        const response = await fetch(`http://3.35.38.73:3000/posts`, {
             method: 'post',
             headers: {
                 'Authorization': `Bearer ${bearer}`,

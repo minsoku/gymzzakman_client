@@ -2,7 +2,7 @@
 
 export const getFitnessCenter = async () => {
     try {
-        const response = await fetch(`${process.env.NEST_SERVER}/fitness-centers`, {
+        const response = await fetch(`http://3.35.38.73:3000/fitness-centers`, {
             method: 'get',
             credentials: 'include',
         })
