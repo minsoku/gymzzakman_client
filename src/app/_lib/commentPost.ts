@@ -21,7 +21,6 @@ export const postComment = async (body: { content: string, postId: number }) => 
             credentials: 'include',
         })
         const res = await response.json();
-        console.log("res", res)
         if (!response.ok || res.success === false) {
             throw new Error(res.message);
         }

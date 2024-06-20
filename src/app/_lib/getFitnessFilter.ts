@@ -8,7 +8,6 @@ export const getFitnessCenter = async (params: any) => {
             method: 'get',
             credentials: 'include',
         })
-        console.log("response", response, "");
         if (!response.ok) {
             throw new Error('서버에서 오류가 발생했습니다.');
         }

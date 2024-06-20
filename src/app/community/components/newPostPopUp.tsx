@@ -80,7 +80,7 @@ export const NewPostPopUp = ({popUpHandler, search}: any) => {
                     });
                 },
                 (error) => {
-                    console.log('Error', error);
+                    console.error('Error', error);
                 }
             );
         };
