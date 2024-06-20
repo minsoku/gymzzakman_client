@@ -7,7 +7,7 @@ dayjs.extend(timezone);
 
 export const dateFormatting = (param: string): string => {
     const now = dayjs();
-    const date = dayjs(param).add(9, 'hour');
+    const date = dayjs(param).add(0, 'hour');
 
     if (now.diff(date, 'hour') > 24) {
         return date.format('YYYY-MM-DD');
