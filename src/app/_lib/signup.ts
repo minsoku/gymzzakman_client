@@ -24,7 +24,6 @@ export const signUp = async (formData: FormData) => {
             body: formData,
             credentials: 'include',
         })
-        console.log("response", response);
         const res = await response.json();
         if (res?.success) {
             shouldRedirect = true;

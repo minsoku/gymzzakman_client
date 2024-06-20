@@ -10,7 +10,7 @@ export const SignupMain = () => {
     const [password, setPassword] = useState<string>('');
     const [passwordConfirm, setPasswordConfirm] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
-    const [error, setError] = useState<string | null>(null);
+    const [error, setError] = useState<string>("");
     const handleFileChange = (e: any): void => {
         const file = e.target.files[0];
         if (file.type !== 'image/png' && file.type !== 'image/jpeg' && file.type !== 'image/jpg') {
@@ -35,7 +35,6 @@ export const SignupMain = () => {
             formData.append('file', file);
         }
         signUp(formData).then((res) => {
-            console.log(res);
             if (res?.message) {
                 setError(res?.message);
             }
@@ -200,7 +199,7 @@ export const SignupMain = () => {
 
                 </div>
             </div>
-            <div className="text-red-500 text-lg mb-4">{error ? errorCodes[error] : ''}</div>
+            <div className="text-red-500 text-lg mb-4">{errorCodes[error]}</div>
             <button
                 className="mt-5 cursor-pointer [border:none] py-[1.812rem] pr-[1.25rem] pl-[1.312rem] self-stretch flex flex-row items-start justify-center box-border max-w-full z-[1] bg-main rounded-2xl"
                 onClick={postSignUp}
