@@ -27,7 +27,7 @@ export const LoginMain: NextPage = () => {
     }, []);
 
     const onChangeField: ChangeEventHandler<HTMLInputElement> = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setState((prevState: any) => ({
             ...prevState,
             [name]: value,
@@ -52,7 +52,7 @@ export const LoginMain: NextPage = () => {
             isLoading: true,
         }));
 
-        const { email, password } = state;
+        const {email, password} = state;
         let reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
         if (!email || !password) {
             setState((prevState: any) => ({
@@ -106,15 +106,15 @@ export const LoginMain: NextPage = () => {
             className="m-0 w-[42.938rem] flex flex-col items-start justify-start gap-[2.706rem] max-w-full mq700:gap-[1.375rem]">
             <div className="self-stretch flex flex-col items-start justify-start gap-[1.437rem] max-w-full">
                 {state.isLoading && (
-                    <div className="h-screen bg-white">
-                    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
+                    <div
+                        className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
                         <div className="bg-white p-8 rounded-lg shadow-lg">
                             <div className="flex items-center justify-center">
-                                <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
+                                <div
+                                    className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
                                 <span className="ml-4 text-blue-500 font-bold text-lg">로딩중</span>
                             </div>
                         </div>
-                    </div>
                     </div>
                 )}
                 <div className="self-stretch flex flex-col items-start justify-start gap-[1.125rem] max-w-full">

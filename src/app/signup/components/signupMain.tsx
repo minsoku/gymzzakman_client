@@ -1,5 +1,5 @@
 "use client";
-import {useState} from "react";
+import React, {useState} from "react";
 import {signUp} from "@/app/_lib/signup";
 import errorCodes from "@/app/const/errorcodes";
 
@@ -10,7 +10,14 @@ export const SignupMain = () => {
     const [password, setPassword] = useState<string>('');
     const [passwordConfirm, setPasswordConfirm] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
-    const [error, setError] = useState<string>("");
+    const [state, setState] = useState<{
+        error: string;
+        isLoading: boolean;
+    }>({
+        error: '',
+        isLoading: false,
+    });
+
     const handleFileChange = (e: any): void => {
         const file = e.target.files[0];
         if (file.type !== 'image/png' && file.type !== 'image/jpeg' && file.type !== 'image/jpg') {
@@ -22,8 +29,10 @@ export const SignupMain = () => {
     };
 
     const postSignUp = () => {
+        setState((prevState) => ({...prevState, error: "", isLoading: true}));
+
         if (password !== passwordConfirm) {
-            setError("PASSWORD_MISMATCH");
+            setState((prevState) => ({...prevState, error: 'PASSWORD_MISMATCH'}));
             return;
         }
         const formData = new FormData();
@@ -34,11 +43,17 @@ export const SignupMain = () => {
         if (file) {
             formData.append('file', file);
         }
-        signUp(formData).then((res) => {
-            if (res?.message) {
-                setError(res?.message);
-            }
-        })
+        signUp(formData)
+            .then((res) => {
+                if (res?.message) {
+                    setState((prevState) => ({...prevState, error: res?.message, isLoading: false}));
+                } else {
+                    setState((prevState) => ({...prevState, error: '', isLoading: false}));
+                }
+            })
+            .catch((err) => {
+                setState((prevState) => ({...prevState, error: 'An error occurred', isLoading: false}));
+            });
     }
 
     const onChangeEmail = (e: any): void => {
@@ -64,6 +79,18 @@ export const SignupMain = () => {
     return (
         <div
             className="self-stretch flex flex-col items-end justify-start gap-[1.206rem] max-w-full text-right text-[1.25rem] text-black font-inter">
+            {state.isLoading && (
+                <div
+                    className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
+                    <div className="bg-white p-8 rounded-lg shadow-lg">
+                        <div className="flex items-center justify-center">
+                            <div
+                                className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
+                            <span className="ml-4 text-blue-500 font-bold text-lg">로딩중</span>
+                        </div>
+                    </div>
+                </div>
+            )}
             <div
                 className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[1.562rem] max-w-full">
                 <div
@@ -199,7 +226,7 @@ export const SignupMain = () => {
 
                 </div>
             </div>
-            <div className="text-red-500 text-lg mb-4">{errorCodes[error]}</div>
+            <div className="text-red-500 text-lg mb-4">{errorCodes[state.error]}</div>
             <button
                 className="mt-5 cursor-pointer [border:none] py-[1.812rem] pr-[1.25rem] pl-[1.312rem] self-stretch flex flex-row items-start justify-center box-border max-w-full z-[1] bg-main rounded-2xl"
                 onClick={postSignUp}
