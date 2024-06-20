@@ -6,8 +6,8 @@ import {MainButton} from "@/app/components/mainButton";
 
 export default function Page() {
     const {data: session, status} = useSession();
-    console.log(process.env.NEXTAUTH_URL_INTERNAL)
-    console.log(process.env.NEXTAUTH_URL)
+    console.log(process.env.NEXT_PUBLIC_INTERNAL)
+    console.log(process.env.NEXT_PUBLIC_URL)
     console.log(session)
     return (
         <div

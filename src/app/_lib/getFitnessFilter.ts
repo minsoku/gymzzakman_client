@@ -4,7 +4,7 @@ export const getFitnessCenter = async (params: any) => {
     const searchParams = new URLSearchParams(params).toString();
 
     try {
-        const response = await fetch(`${process.env.NEXTAUTH_URL_INTERNAL}/fitness-centers/filter?${searchParams}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_INTERNAL}/fitness-centers/filter?${searchParams}`, {
             method: 'get',
             credentials: 'include',
         })
