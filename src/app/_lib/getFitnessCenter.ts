@@ -2,7 +2,7 @@
 
 export const getFitnessCenter = async () => {
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_INTERNAL}/fitness-centers`, {
+        const response = await fetch(`${process.env.NEST_SERVER}/fitness-centers`, {
             method: 'get',
             credentials: 'include',
         })

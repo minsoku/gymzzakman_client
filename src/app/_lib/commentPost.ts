@@ -8,7 +8,7 @@ export const postComment = async (body: { content: string, postId: number }) => 
     let bearer = session?.user?.accessToken;
     const { content, postId } = body;
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_INTERNAL}/posts-comment`, {
+        const response = await fetch(`${process.env.NEST_SERVER}/posts-comment`, {
             method: 'post',
             headers: {
                 'Authorization': `Bearer ${bearer}`,

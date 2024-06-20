@@ -19,7 +19,7 @@ export const signUp = async (formData: FormData) => {
     }
     let shouldRedirect = false;
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_INTERNAL}/auth/register/email`, {
+        const response = await fetch(`${process.env.NEST_SERVER}/auth/register/email`, {
             method: 'post',
             body: formData,
             credentials: 'include',

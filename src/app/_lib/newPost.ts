@@ -9,7 +9,7 @@ export const serverNewPost = async (formData: FormData) => {
     let bearer = session?.user?.accessToken;
 
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_INTERNAL}/posts`, {
+        const response = await fetch(`${process.env.NEST_SERVER}/posts`, {
             method: 'post',
             headers: {
                 'Authorization': `Bearer ${bearer}`,
