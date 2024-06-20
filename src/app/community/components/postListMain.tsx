@@ -1,7 +1,7 @@
 import {PostData} from "@/app/community/page";
 import {categoryObj, CategoryType} from "@/app/_const/categoryObj";
 import {dateFormatting} from "@/app/_lib/dateFormatting";
-import {useState} from "react";
+import {useRef, useState} from "react";
 import {postComment} from "@/app/_lib/commentPost";
 
 interface Hashtags {
@@ -18,10 +18,23 @@ interface IPostData {
 
 
 export const PostListMain = ({post, fetchData}: IPostData) => {
+    const contentRef = useRef<any>(null);
     const [commentList, setCommentList] = useState<boolean>(false);
     const [comment, setComment] = useState<string>('');
+
+    const handleScrollDown = () => {
+        if (contentRef.current) {
+            contentRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     const commentHandler = (e: any) => {
         setComment(e.target.value);
+    }
+
+    const commentOpen = () => {
+        handleScrollDown();
+        setCommentList(!commentList)
     }
 
     const sendComment = () => {
@@ -60,7 +73,7 @@ export const PostListMain = ({post, fetchData}: IPostData) => {
                     }
                 </div>
                 <div className="ml-5 mt-3 font-light text-gray-400">{dateFormatting(post.createdAt)}</div>
-                <button onClick={() => setCommentList(!commentList)}>
+                <button onClick={commentOpen}>
                     <div className="w-6 h-6 absolute right-8 bottom-0">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                              fill="#none">
@@ -79,7 +92,6 @@ export const PostListMain = ({post, fetchData}: IPostData) => {
             {commentList &&
                 <>
                     <div className="w-full overflow-auto h-96 absolute bg-white border-black border-[1px] z-50">
-                        {/*이거로 map*/}
                         {post.comments.map((item, key) => (
                             // eslint-disable-next-line react/jsx-key
                             <div>
@@ -105,6 +117,7 @@ export const PostListMain = ({post, fetchData}: IPostData) => {
                     </div>
                 </>
             }
+            <div  ref={contentRef} ></div>
         </div>
     )
 }
