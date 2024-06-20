@@ -67,9 +67,9 @@ export const SignupMain = () => {
             <div
                 className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[1.562rem] max-w-full">
                 <div
-                    className="w-[4.563rem] flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
+                    className="w-24 flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
                     <div
-                        className="self-stretch relative tracking-[-0.05em] font-medium inline-block min-w-[4.563rem] z-[1] mq450:text-[1rem]">
+                        className="text-lg self-stretch relative tracking-[-0.05em] font-medium inline-block min-w-[4.563rem] z-[1] mq450:text-[1rem]">
                         이메일
                     </div>
                 </div>
@@ -86,9 +86,9 @@ export const SignupMain = () => {
             <div
                 className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[1.562rem] max-w-full">
                 <div
-                    className="w-[4.563rem] flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
+                    className="w-24 flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
                     <div
-                        className="self-stretch relative tracking-[-0.05em] font-medium inline-block min-w-[4.563rem] z-[1] mq450:text-[1rem]">
+                        className="text-lg self-stretch relative tracking-[-0.05em] font-medium inline-block min-w-[4.563rem] z-[1] mq450:text-[1rem]">
                         비밀번호
                     </div>
                 </div>
@@ -105,9 +105,9 @@ export const SignupMain = () => {
             <div
                 className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[1.562rem] max-w-full">
                 <div
-                    className="w-[4.563rem] flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
+                    className="w-24 flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
                     <div
-                        className="self-stretch relative tracking-[-0.05em] font-medium inline-block min-w-[4.563rem] z-[1] mq450:text-[1rem]">
+                        className="text-lg self-stretch relative tracking-[-0.05em] font-medium inline-block min-w-[4.563rem] z-[1] mq450:text-[1rem]">
                         비밀번호 확인
                     </div>
                 </div>
@@ -124,9 +124,9 @@ export const SignupMain = () => {
             <div
                 className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[1.562rem] max-w-full">
                 <div
-                    className="w-[4.563rem] flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
+                    className="w-24 flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
                     <div
-                        className="self-stretch relative tracking-[-0.05em] font-medium inline-block min-w-[4.563rem] z-[1] mq450:text-[1rem]">
+                        className="text-lg self-stretch relative tracking-[-0.05em] font-medium inline-block min-w-[4.563rem] z-[1] mq450:text-[1rem]">
                         닉네임
                     </div>
                 </div>
@@ -144,9 +144,9 @@ export const SignupMain = () => {
                 <div
                     className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[1.562rem] max-w-full">
                     <div
-                        className="w-[4.438rem] flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
+                        className="w-24 flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
                         <div
-                            className="self-stretch relative tracking-[-0.05em] font-medium inline-block min-w-[4.438rem] z-[1] mq450:text-[1rem]">
+                            className="text-lg self-stretch relative tracking-[-0.05em] font-medium inline-block min-w-[4.438rem] z-[1] mq450:text-[1rem]">
                             휴대폰
                         </div>
                     </div>

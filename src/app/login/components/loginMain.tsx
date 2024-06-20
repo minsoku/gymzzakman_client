@@ -140,27 +140,9 @@ export const LoginMain: NextPage = () => {
             <div className="self-stretch flex flex-row items-start justify-center py-[0rem] pr-[1.312rem] pl-[1.25rem]">
                 <div className="flex flex-row items-start justify-start gap-[0.437rem]">
                     <div
-                        className="relative text-[0.938rem] tracking-[-0.05em] font-inter text-silver text-left inline-block min-w-[4.375rem] z-[1]">
-                        아이디 찾기
-                    </div>
-                    <div
-                        className="w-[0.875rem] relative text-[0.938rem] tracking-[-0.05em] font-inter text-silver text-left inline-block z-[1]">
-                        ㅣ
-                    </div>
-                    <div
-                        className="relative text-[0.938rem] tracking-[-0.05em] font-inter text-silver text-left inline-block min-w-[5.188rem] z-[1]">
-                        비밀번호 찾기
-                    </div>
-                    <div
-                        className="w-[0.875rem] relative text-[0.938rem] tracking-[-0.05em] font-inter text-silver text-left inline-block z-[1]">
-                        ㅣ
-                    </div>
-
-                    <div
                         className="relative text-[0.938rem] tracking-[-0.05em] font-inter text-silver text-left inline-block min-w-[3.313rem] z-[1]">
                         <Link href={"/signup"}>회원가입</Link>
                     </div>
-
                 </div>
             </div>
         </form>
