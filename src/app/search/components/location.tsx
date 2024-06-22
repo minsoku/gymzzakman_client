@@ -21,7 +21,7 @@ export const Location = ({data, selectOption}: ILocationProps) => {
                 const mapContainer = document.getElementById('map'), // 지도를 표시할 div
                     mapOption = {
                         // @ts-ignore
-                        center: new window.kakao.maps.LatLng(37.45779290, 126.67825790), // 지도의 중심좌표
+                        center: new window.kakao.maps.LatLng(37.45779290, 126.65715790), // 지도의 중심좌표
                         level: 6 // 지도의 확대 레벨
                     };
                 // @ts-ignore
