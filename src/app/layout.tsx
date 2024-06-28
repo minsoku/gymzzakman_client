@@ -5,7 +5,6 @@ import "./globals.css";
 import {Header} from "@/app/Header";
 import Script from "next/script";
 import AuthSession from "@/app/_component/AuthSession";
-import Head from "next/head";
 
 const inter = Inter({subsets: ["latin"]});
 

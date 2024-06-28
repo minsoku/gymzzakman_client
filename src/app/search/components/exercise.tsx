@@ -1,4 +1,9 @@
-export const Exercise = ({selectOption}:any) => {
+interface IExerciseProps {
+    handleExerciseOption: () => void;
+
+}
+
+export const Exercise = ({handleExerciseOption}:IExerciseProps) => {
     return (
         <>
             <div
@@ -27,7 +32,7 @@ export const Exercise = ({selectOption}:any) => {
                         </b>
                     </button>
                     <button
-                        onClick={() => selectOption("헬스")}
+                        onClick={() => handleExerciseOption()}
                         className="cursor-pointer [border:none] py-[1.375rem] px-[5rem] bg-main rounded-2xl flex flex-row items-start justify-start z-[4]">
                         <b className="relative text-[1.25rem] tracking-[-0.02em] inline-block font-inter text-white text-left min-w-[4.563rem] z-[5] mq450:text-[1rem]">
                             적용하기

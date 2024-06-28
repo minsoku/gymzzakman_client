@@ -21,24 +21,43 @@ export interface IFitnessCenter {
     }[];
 }
 
+export interface IFilterData {
+    id: number,
+    month: number,
+    price: number,
+    order: number,
+    fitnessCenter: {
+        id: number;
+        name: string;
+        profileImage: string;
+        shortAddr: string;
+        lat: string;
+        lng: string;
+        phoneNumber: string;
+        safeNumber: string;
+        address: string;
+    }
+}
+
 
 export default function Page() {
     const [data, setData] = useState<IFitnessCenter[]>([]);
-    const [filterData, setFilterData] = useState<any>([]);
-    const [noData, setNodata] = useState<any>(false)
+    const [filterData, setFilterData] = useState<IFilterData[]>([]);
+    const [noData, setNodata] = useState<boolean>(false);
     useEffect(() => {
         getFitnessCenter().then((res) => {
             setData(res)
         });
     }, []);
 
-    const setFilterDataHandler = (data: any, length: number) => {
+    const setFilterDataHandler = (data: IFilterData[], length: number) => {
         if (length < 1) {
             setNodata(true);
             return;
         }
         setFilterData(data);
     }
+
     return (
         <div
             className="w-full relative bg-white overflow-hidden flex flex-col items-start justify-start gap-[0.062rem] leading-[normal] tracking-[normal]">
@@ -54,10 +73,10 @@ export default function Page() {
                         </h1>
                     </div>
                 </div>
-                {(filterData.length < 1 && noData === false) &&
+                {(filterData.length < 1 && !noData) &&
                     <SearchMain data={data} setFilterDataHandler={setFilterDataHandler}/>}
-                {(filterData.length > 0 && noData === false) && filterData.map((data:any, index: number) => (
-                    <SearchResultMain key={index} data={data}/>))}
+                {(filterData.length > 0 && !noData) && filterData.map((item: IFilterData, index: number) => (
+                    <SearchResultMain key={index} {...item}/>))}
                 {noData && <div className="h-screen bg-white">검색 결과가 없습니다.</div>}
             </main>
         </div>

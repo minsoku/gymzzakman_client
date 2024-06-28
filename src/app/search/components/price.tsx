@@ -1,16 +1,20 @@
 "use client"
 import {useState} from "react";
 import Slider from "@/app/search/components/slider";
+import {IPriceOptions} from "@/app/search/components/searchMain";
 
+interface IPricePrips {
+    handlePriceOption: (option: IPriceOptions) => void;
+}
 
-export const Price = ({selectOption} : any) => {
+export const Price = ({handlePriceOption} : IPricePrips) => {
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(200);
     const [minMonth, setMinMonth] = useState(0);
     const [maxMonth, setMaxMonth] = useState(12);
 
     const selectOrder = () => {
-        selectOption("price", {
+        handlePriceOption({
             minPrice,
             maxPrice,
             minMonth,

@@ -1,11 +1,13 @@
 import {useEffect, useState} from "react";
+import {IFitnessCenter} from "@/app/search/page";
 
-interface ILocationProps {
-    data: any;
-    selectOption: (param: string, option: any) => void;
+interface IProps {
+    data: IFitnessCenter[];
+    handleLocationOption: (param: string) => void;
 }
 
-export const Location = ({data, selectOption}: ILocationProps) => {
+export const Location = ({data, handleLocationOption}: IProps) => {
+    console.log(data);
     const [map, setMap] = useState<any>(null);
     useEffect(() => {
         const script = document.createElement('script');
@@ -58,7 +60,7 @@ export const Location = ({data, selectOption}: ILocationProps) => {
             const callback = (result: any, status: any) => {
                 if (status === "OK") {
                     const currentAddress = result[0].address.region_1depth_name + " " + result[0].address.region_2depth_name;
-                    selectOption("location", currentAddress);
+                    handleLocationOption(currentAddress);
                 }
             }
             geocoder.coord2Address(coord.La, coord.Ma, callback);

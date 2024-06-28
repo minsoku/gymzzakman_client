@@ -1,6 +1,7 @@
 import {useState} from "react";
+import { IFilterData } from "@/app/search/page";
 
-export const SearchResultMain = ({data}: any) => {
+export const SearchResultMain = (data: IFilterData) => {
     const [popup, setPopup] = useState(false);
     const popupHandler = () => {
         setPopup(!popup)

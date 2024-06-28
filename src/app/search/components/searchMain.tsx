@@ -1,13 +1,24 @@
-"use client"
-
-import {useCallback, useEffect, useState} from "react";
-
+import {useCallback, useState} from "react";
 import {Location} from "@/app/search/components/location";
 import {Price} from "@/app/search/components/price";
 import {Exercise} from "@/app/search/components/exercise";
 import {getFitnessCenter} from "@/app/_lib/getFitnessFilter";
+import {IFilterData, IFitnessCenter} from "@/app/search/page";
 
-export const SearchMain = ({data, setFilterDataHandler}: any) => {
+
+export interface IPriceOptions {
+    minPrice: number,
+    maxPrice: number,
+    minMonth: number,
+    maxMonth: number
+}
+
+interface IProps {
+    data: IFitnessCenter[],
+    setFilterDataHandler: (data: IFilterData[], length: number) => void;
+}
+
+export const SearchMain = ({data, setFilterDataHandler}: IProps) => {
     const [type, setType] = useState<string>("location");
     const [inputLocationValue, setInputLocationValue] = useState<string>("");
     const [inputPriceValue, setInputPriceValue] = useState<any>({
@@ -20,16 +31,19 @@ export const SearchMain = ({data, setFilterDataHandler}: any) => {
         setType(type);
     }, []);
 
-    const selectOption = (param: string, option?: any) => {
-        if (param === 'location') {
-            setInputLocationValue("위치 : " + option);
-        }
-        if(param === 'price') {
-            setInputPriceValue( {option,text: "  " + "가격 : " + option.minPrice + "만원 ~ " + option.maxPrice + "만원" + " 기간" + option.minMonth + "개월 ~ " + option.maxMonth + "개월"});
-        }
-        if(param === '헬스') {
-            setInputExerciseValue("  " + "운동종목 : 헬스");
-        }
+    const handleLocationOption = (param: string) => {
+        setInputLocationValue("위치 : " + param);
+    }
+
+    const handlePriceOption = (option: IPriceOptions) => {
+        setInputPriceValue({
+            option,
+            text: "  " + "가격 : " + option.minPrice + "만원 ~ " + option.maxPrice + "만원" + " 기간" + option.minMonth + "개월 ~ " + option.maxMonth + "개월"
+        });
+    }
+
+    const handleExerciseOption = () => {
+        setInputExerciseValue("  " + "운동종목 : 헬스");
     }
 
     const getFitnessFilterHandler = async () => {
@@ -82,15 +96,15 @@ export const SearchMain = ({data, setFilterDataHandler}: any) => {
                         </button>
                         <button
                             onClick={() => handleType("exercise")}
-                            className={"h-full w-[33.4%] relative font-semibold inline-block content-center border-y "  +
+                            className={"h-full w-[33.4%] relative font-semibold inline-block content-center border-y " +
                                 (type === "exercise" ? "border-b-black" : "")}>
                             운동종목
                         </button>
                     </div>
                 </div>
-                {type === "location" && <Location selectOption={selectOption} data={data} />}
-                {type === "price" && <Price selectOption={selectOption} />}
-                {type === "exercise" && <Exercise selectOption={selectOption} />}
+                {type === "location" && <Location handleLocationOption={handleLocationOption} data={data}/>}
+                {type === "price" && <Price handlePriceOption={handlePriceOption}/>}
+                {type === "exercise" && <Exercise handleExerciseOption={handleExerciseOption}/>}
             </div>
         </section>
     )
