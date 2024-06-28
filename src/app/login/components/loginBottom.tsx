@@ -2,7 +2,6 @@ import type { NextPage } from "next";
 import Link from "next/link";
 
 export const LoginBottom: NextPage = () => {
-
     return (
         <section
             className="self-stretch [background:linear-gradient(91.58deg,_#4aadff,_#88c4f6_68.35%,_#4aadff)] flex flex-col items-start justify-start pt-[1.875rem] px-[8.312rem] pb-[3rem] box-border relative gap-[1.431rem] max-w-full z-[1] mt-[-1.625rem] text-center text-[2.5rem] text-white font-inter mq450:pl-[1.25rem] mq450:pr-[1.25rem] mq450:box-border mq975:pl-[4.125rem] mq975:pr-[4.125rem] mq975:box-border">

@@ -7,7 +7,7 @@ import React, {ChangeEventHandler, FormEventHandler, useEffect, useState} from "
 import {redirect} from "next/navigation";
 import errorCodes from "@/app/const/errorcodes";
 
-interface State {
+interface IState {
     email: string;
     password: string;
     errorMessage: string | null;
@@ -17,7 +17,7 @@ interface State {
 }
 
 export const LoginMain: NextPage = () => {
-    const [state, setState] = useState<State>({
+    const [state, setState] = useState<IState>({
         email: "",
         password: "",
         errorMessage: null,

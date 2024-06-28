@@ -22,12 +22,9 @@ export const authOptions: NextAuthOptions = {
                         "Authorization": `Basic ${basicToken}`,
                     },
                 });
-
                 responseStatus(authResponse.status);
-
-                const user = await authResponse.json();
                 return {
-                    ...user,
+                    ...await authResponse.json(),
                 };
             }
         })

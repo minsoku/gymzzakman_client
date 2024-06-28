@@ -4,7 +4,7 @@ import {signUp} from "@/app/_lib/signup";
 import errorCodes from "@/app/const/errorcodes";
 
 export const SignupMain = () => {
-    const [file, setFile] = useState<any>(null);
+    const [file, setFile] = useState<File>();
     const [email, setEmail] = useState<string>('');
     const [nickname, setNickname] = useState<string>('');
     const [password, setPassword] = useState<string>('');
@@ -41,6 +41,7 @@ export const SignupMain = () => {
         formData.append('password', password);
         formData.append('phoneNumber', phone);
         if (file) {
+            console.log(file);
             formData.append('file', file);
         }
         signUp(formData)

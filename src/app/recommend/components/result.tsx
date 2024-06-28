@@ -1,6 +1,11 @@
 import {useRouter} from "next/navigation";
 
-export const Result = ({resultArray}: any) => {
+interface IProps {
+    resultArray: string[];
+}
+
+export const Result = ({resultArray}: IProps) => {
+    console.log(resultArray);
     const router = useRouter()
     const routerClick = () => {
         router.push('/search')

@@ -5,6 +5,7 @@ import {PostMenu} from "@/app/community/components/postMenu";
 import {PostList} from "@/app/community/components/postList";
 import {getPaginatePost} from "@/app/_lib/getPaginatePost";
 import PostPagination from "@/app/community/components/postPagination";
+import {Loading} from "@/app/components/loading";
 
 export interface PostData {
     comments: {
@@ -72,20 +73,7 @@ export default function Page() {
         fetchData(1, "");
     }, [])
     if (error) return <div className="h-screen bg-white">에러 발생</div>
-    if (loading) return (
-        <div className="h-screen bg-white">
-            <div
-                className="h-screen fixed top-0 left-0 w-full bg-black bg-opacity-50 flex justify-center items-center z-50">
-                <div className="bg-white p-8 rounded-lg shadow-lg">
-                    <div className="flex items-center justify-center">
-                        <div
-                            className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
-                        <span className="ml-4 text-blue-500 font-bold text-lg">로딩중</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+    if (loading) return <Loading/>;
     return (
         <div
             className="w-full relative bg-white overflow-hidden flex flex-col items-start justify-start pt-[0rem] px-[0rem] pb-[3.312rem] box-border gap-[9.375rem] leading-[normal] tracking-[normal] text-center text-[1.25rem] text-cornflowerblue-100 font-inter mq450:gap-[2.313rem] mq725:gap-[4.688rem]">
