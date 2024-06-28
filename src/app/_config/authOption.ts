@@ -32,7 +32,7 @@ export const authOptions: NextAuthOptions = {
             }
         })
     ],
-    secret: "toothless_kawaii",
+    secret: process.env.NEXTAUTH_SECRET,
     pages: {
         signIn: '/login'
     },
