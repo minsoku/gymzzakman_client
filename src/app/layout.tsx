@@ -23,7 +23,7 @@ export default function RootLayout({children}: Readonly<{
     return (
         <html lang="en">
         <Script type="text/javascript"
-                src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ea22cc7b4726298c76cf9fc0c40e46bc&autoload=false&libraries=services"/>
+                src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAKO_API_KEY}&autoload=false&libraries=services`}/>
         <body className={inter.className}>
         <AuthSession>
             <Header/>
