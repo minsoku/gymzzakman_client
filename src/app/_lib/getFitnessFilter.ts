@@ -1,7 +1,11 @@
 "use server"
 
-export const getFitnessCenter = async (params: any) => {
-    const searchParams = new URLSearchParams(params).toString();
+import {IPriceOptions} from "@/app/search/components/searchMain";
+
+export const getFitnessCenter = async (params: IPriceOptions) => {
+    const searchParams = new URLSearchParams(
+        Object.entries(params).map(([key, value]) => [key, value.toString()])
+    ).toString();
 
     try {
         const response = await fetch(`${process.env.NEXTAUTH_URL_INTERNAL}fitness-centers/filter?${searchParams}`, {

@@ -55,7 +55,7 @@ export default function Page() {
 
     useEffect(() => {
         if (testResult.length === 4) {
-            const sportMap: any = {
+            const sportMap: {[key: string]: string} = {
                 '취미 생활': '헬스',
                 '다이어트': '필라테스',
                 '체형 교정': '태권도',

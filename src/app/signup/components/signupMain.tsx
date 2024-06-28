@@ -18,13 +18,16 @@ export const SignupMain = () => {
         isLoading: false,
     });
 
-    const handleFileChange = (e: any): void => {
-        const file = e.target.files[0];
-        if (file.type !== 'image/png' && file.type !== 'image/jpeg' && file.type !== 'image/jpg') {
-            alert('PNG, JPG만 가능합니다.');
-            return;
-        } else {
-            setFile(file);
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+        const files = e.target.files;
+        if (files && files.length > 0) {
+            const file = files[0];
+            if (file.type !== 'image/png' && file.type !== 'image/jpeg' && file.type !== 'image/jpg') {
+                alert('PNG, JPG만 가능합니다.');
+                return;
+            } else {
+                setFile(file);
+            }
         }
     };
 
@@ -57,23 +60,23 @@ export const SignupMain = () => {
             });
     }
 
-    const onChangeEmail = (e: any): void => {
+    const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setEmail(e.target.value);
     }
 
-    const onChangeNickname = (e: any): void => {
+    const onChangeNickname = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setNickname(e.target.value);
     }
 
-    const onChangePassword = (e: any): void => {
+    const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setPassword(e.target.value);
     }
 
-    const onChangePasswordConfirm = (e: any): void => {
+    const onChangePasswordConfirm = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setPasswordConfirm(e.target.value);
     }
 
-    const onChnagePhone = (e: any): void => {
+    const onChnagePhone = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setPhone(e.target.value);
     }
 

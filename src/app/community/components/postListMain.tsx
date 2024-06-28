@@ -1,7 +1,7 @@
 import {PostData} from "@/app/community/page";
 import {categoryObj, CategoryType} from "@/app/_const/categoryObj";
 import {dateFormatting} from "@/app/_lib/dateFormatting";
-import {useRef, useState} from "react";
+import React, {useRef, useState} from "react";
 import {postComment} from "@/app/_lib/commentPost";
 
 interface Hashtags {
@@ -18,7 +18,7 @@ interface IPostData {
 
 
 export const PostListMain = ({post, fetchData}: IPostData) => {
-    const contentRef = useRef<any>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
     const [commentList, setCommentList] = useState<boolean>(false);
     const [comment, setComment] = useState<string>('');
 
@@ -28,7 +28,7 @@ export const PostListMain = ({post, fetchData}: IPostData) => {
         }
     };
 
-    const commentHandler = (e: any) => {
+    const commentHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setComment(e.target.value);
     }
 
@@ -117,7 +117,7 @@ export const PostListMain = ({post, fetchData}: IPostData) => {
                     </div>
                 </>
             }
-            <div  ref={contentRef} ></div>
+            <div ref={contentRef}></div>
         </div>
     )
 }

@@ -27,7 +27,7 @@ export const LoginMain: NextPage = () => {
 
     useEffect(() => {
         if (localStorage.getItem("saveId")) {
-            setState((prevState: any) => ({
+            setState((prevState: IState) => ({
                 ...prevState,
                 email: localStorage.getItem("saveId") || "",
                 idChecked: true,
@@ -37,7 +37,7 @@ export const LoginMain: NextPage = () => {
 
     const onChangeField: ChangeEventHandler<HTMLInputElement> = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
-        setState((prevState: any) => ({
+        setState((prevState: IState) => ({
             ...prevState,
             [name]: value,
             errorMessage: "",
@@ -45,7 +45,7 @@ export const LoginMain: NextPage = () => {
     };
 
     const onChangeSaveId: ChangeEventHandler<HTMLInputElement> = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setState((prevState: any) => ({
+        setState((prevState: IState) => ({
             ...prevState,
             idChecked: e.target.checked,
         }));
@@ -56,7 +56,7 @@ export const LoginMain: NextPage = () => {
 
     const onSubmit: FormEventHandler<HTMLFormElement> = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setState((prevState: any) => ({
+        setState((prevState: IState) => ({
             ...prevState,
             isLoading: true,
         }));
@@ -64,7 +64,7 @@ export const LoginMain: NextPage = () => {
         const {email, password} = state;
         let reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
         if (!email || !password) {
-            setState((prevState: any) => ({
+            setState((prevState: IState) => ({
                 ...prevState,
                 errorMessage: "아이디 또는 비밀번호를 입력해주세요.",
                 isLoading: false,
@@ -72,7 +72,7 @@ export const LoginMain: NextPage = () => {
             return;
         }
         if (!reg.test(password)) {
-            setState((prevState: any) => ({
+            setState((prevState: IState) => ({
                 ...prevState,
                 errorMessage: "비밀번호는 영문, 숫자, 특수문자를 포함한 8자 이상 15자 이하로 입력해주세요.",
                 isLoading: false,
@@ -86,7 +86,7 @@ export const LoginMain: NextPage = () => {
                 password,
                 redirect: false,
             }).then((res) => {
-                setState((prevState: any) => ({
+                setState((prevState: IState) => ({
                     ...prevState,
                     isLoading: false,
                 }));
@@ -96,7 +96,7 @@ export const LoginMain: NextPage = () => {
                     }
                     redirect("/");
                 } else if (res?.error) {
-                    setState((prevState: any) => ({
+                    setState((prevState: IState) => ({
                         ...prevState,
                         errorMessage: res.error ? errorCodes[res.error] : 'Unknown error',
                         email: localStorage.getItem("saveId") || "",

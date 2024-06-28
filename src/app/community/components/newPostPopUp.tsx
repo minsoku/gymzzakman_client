@@ -8,7 +8,12 @@ interface Position {
     longitude: string;
 };
 
-export const NewPostPopUp = ({popUpHandler, search}: any) => {
+interface IProps {
+    popUpHandler: () => void;
+    search: () => void;
+}
+
+export const NewPostPopUp = ({popUpHandler, search}: IProps) => {
     const session: any = useSession()
     const [content, setContent] = useState<string>('');
     const [position, setPosition] = useState<Position>({latitude: '', longitude: ''});
@@ -45,7 +50,7 @@ export const NewPostPopUp = ({popUpHandler, search}: any) => {
         setContent(e.target.value);
     }
 
-    const onChangeCategory = (e: any) => {
+    const onChangeCategory = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setCategory(e.target.value);
     }
 

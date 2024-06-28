@@ -18,10 +18,15 @@ interface IProps {
     setFilterDataHandler: (data: IFilterData[], length: number) => void;
 }
 
+interface IinputPriceValue {
+    text: string,
+    option: IPriceOptions
+}
+
 export const SearchMain = ({data, setFilterDataHandler}: IProps) => {
     const [type, setType] = useState<string>("location");
     const [inputLocationValue, setInputLocationValue] = useState<string>("");
-    const [inputPriceValue, setInputPriceValue] = useState<any>({
+    const [inputPriceValue, setInputPriceValue] = useState<IinputPriceValue>({
         text: "",
         option: {minPrice: 0, maxPrice: 200, minMonth: 0, maxMonth: 12}
     });
