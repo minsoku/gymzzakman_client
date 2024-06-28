@@ -1,4 +1,4 @@
-import {NextAuthOptions, Session} from "next-auth";
+import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import {responseStatus} from "@/app/_helper/responseStatus";
 
@@ -15,7 +15,7 @@ export const authOptions: NextAuthOptions = {
             },
             async authorize(credentials, req): Promise<any> {
                 const basicToken = Buffer.from(`${credentials?.username}:${credentials?.password}`).toString('base64');
-                const authResponse = await fetch(`http://3.35.38.73:3000/auth/login/email`, {
+                const authResponse = await fetch(`${process.env.NEXTAUTH_SERVER}auth/login/email`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -42,13 +42,6 @@ export const authOptions: NextAuthOptions = {
     },
     callbacks: {
         async jwt({ token, user }) {
-            // const currentTimestamp = Math.floor(Date.now() / 1000);
-            // const tokenTimestamp: number = token.exp as number;
-            // if(tokenTimestamp < currentTimestamp) {
-            //
-            // }
-            // console.log("현재 시간", new Date(currentTimestamp * 1000).toLocaleString())
-            // console.log("jwt", new Date(tokenTimestamp * 1000).toLocaleString());
             if (user) {
                 token = {...user};
             }
