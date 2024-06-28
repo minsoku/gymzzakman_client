@@ -8,7 +8,7 @@ export const postComment = async (body: { content: string, postId: number }) => 
     let bearer = session?.user?.accessToken;
     const { content, postId } = body;
     try {
-        const response = await fetch(`http://3.35.38.73:3000/posts-comment`, {
+        const response = await fetch(`${process.env.NEXTAUTH_URL_INTERNAL}posts-comment`, {
             method: 'post',
             headers: {
                 'Authorization': `Bearer ${bearer}`,

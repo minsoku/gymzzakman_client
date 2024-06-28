@@ -15,7 +15,7 @@ export const authOptions: NextAuthOptions = {
             },
             async authorize(credentials, req): Promise<any> {
                 const basicToken = Buffer.from(`${credentials?.username}:${credentials?.password}`).toString('base64');
-                const authResponse = await fetch(`${process.env.NEXTAUTH_SERVER}auth/login/email`, {
+                const authResponse = await fetch(`${process.env.NEXTAUTH_URL_INTERNAL}auth/login/email`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

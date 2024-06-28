@@ -8,7 +8,7 @@ export const renewAccessToken = async () => {
     // @ts-ignore
     const bearer = session?.user?.refreshToken;
     try {
-        const response = await fetch(`http://3.35.38.73:3000/auth/token/access`, {
+        const response = await fetch(`${process.env.NEXTAUTH_URL_INTERNAL}auth/token/access`, {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
