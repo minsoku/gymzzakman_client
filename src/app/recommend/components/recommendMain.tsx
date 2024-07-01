@@ -13,11 +13,11 @@ export const RecommendMain = ({ testStart }: Iprops) => {
                     딱 맞는 운동 종목을 추천받아보세요!
                 </p>
                 <div className="flex relative">
-                    <img src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/recommend_main.png"/>
+                    <img src="/recommend-main.png"/>
                     <img className="w-32 h-32 absolute bottom-14"
-                         src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/recommend-main-left.png"/>
+                         src="/recommend-main-left.png"/>
                     <img className="w-32 h-32 absolute right-0 top-32"
-                         src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/recommend-main-right.png"/>
+                         src="/recommend-main-right.png"/>
                 </div>
                 <button onClick={testStart}
                         className="mt-10 w-96 h-16 bg-main m-auto rounded-2xl text-white text-xl font-bold">테스트 시작하기

@@ -134,7 +134,7 @@ export const LoginMain: NextPage = () => {
                         <img
                             className="h-[1.5rem] w-[1.5rem] relative overflow-hidden shrink-0 min-h-[1.5rem] z-[2]"
                             alt=""
-                            src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/login-id.png"
+                            src="/login-id.png"
                         />
                         <input
                             className="w-full [border:none] [outline:none] font-semibold font-inter text-[1.25rem] bg-[transparent] h-[1.5rem] relative tracking-[-0.05em] text-gainsboro text-left inline-block p-0 z-[2] mq450:text-[1rem]"
@@ -152,7 +152,7 @@ export const LoginMain: NextPage = () => {
                         <img
                             className="h-[1.5rem] w-[1.5rem] relative overflow-hidden shrink-0 min-h-[1.5rem] z-[2]"
                             alt=""
-                            src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/login-password.png"
+                            src="/login-password.png"
                         />
                         <input
                             className="w-full [border:none] [outline:none] font-semibold font-inter text-[1.25rem] bg-[transparent] h-[1.5rem] relative tracking-[-0.05em] text-gainsboro text-left inline-block p-0 z-[2] mq450:text-[1rem]"

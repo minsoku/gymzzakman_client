@@ -19,7 +19,7 @@ export const Header = () => {
                     className="h-[2.5rem] w-[3.188rem] relative overflow-hidden shrink-0"
                     loading="lazy"
                     alt=""
-                    src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/logo.png"
+                    src="/logo.png"
                 />
             </Link>
             <nav

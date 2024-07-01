@@ -40,8 +40,8 @@ export const Chapter = ({chapter, chapterChange, chapterList}: Iprops) => {
                     >
                         {chapterList[chapter - 1]?.button1}
                         <img className="w-4 absolute right-10 bottom-7"
-                             src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/check_image.png"
-                            alt={"check_image"}/>
+                             src="/check-image.png"
+                            alt={"check-image"}/>
                     </button>
                     <button
                         className={`relative text-lg h-16 border-[1px] mr-4 hover:bg-main hover:text-white rounded-xl ${(chapterList[chapter - 1].button3 ? "w-1/3" : "w-1/2")}`}
@@ -49,8 +49,8 @@ export const Chapter = ({chapter, chapterChange, chapterList}: Iprops) => {
                     >
                         {chapterList[chapter - 1]?.button2}
                         <img className="w-4 absolute right-10 bottom-7"
-                             src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/check_image.png"
-                             alt={"check_image"}/>
+                             src="/check-image.png"
+                             alt={"check-image"}/>
                     </button>
                     {chapterList[chapter - 1]?.button3 &&
                         <button
@@ -59,8 +59,8 @@ export const Chapter = ({chapter, chapterChange, chapterList}: Iprops) => {
                         >
                             {chapterList[chapter - 1]?.button3}
                             <img className="w-4 absolute right-10 bottom-7"
-                                 src="https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/check_image.png"
-                                 alt={"check_image"}/>
+                                 src="/check-image.png"
+                                 alt={"check-image"}/>
                         </button>
                     }
                 </span>

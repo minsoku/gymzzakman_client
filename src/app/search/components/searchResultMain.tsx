@@ -29,13 +29,13 @@ export const SearchResultMain = (data: IFilterData) => {
                             <div className="mt-2 flex justify-center">
                                 <button onClick={() => handlePhoneClick(data.fitnessCenter.safeNumber)} className="w-28 flex flex-col bg-gray-200 m-1 rounded-2xl items-center">
                                     <img className="m-3 w-12"
-                                         src={"https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/call_image.png"}
+                                         src={"/call-image.png"}
                                          alt={"전화상담"}/>
                                     <span className="text-lg text-center font-bold">전화상담</span>
                                 </button>
                                 <button onClick={() => handleSmsClick(data.fitnessCenter.phoneNumber)} className="w-28 flex flex-col bg-gray-200 m-1 rounded-2xl items-center">
                                     <img className="m-3 w-12"
-                                         src={"https://gymzzakman.s3.ap-northeast-2.amazonaws.com/public/message_image.png"}
+                                         src={"/message-image.png"}
                                          alt={"문자상담"}/>
                                     <span className="text-lg text-center font-bold">문자상담</span>
                                 </button>
