@@ -7,6 +7,7 @@ export const SignupMain = () => {
     const [file, setFile] = useState<File>();
     const [email, setEmail] = useState<string>('');
     const [nickname, setNickname] = useState<string>('');
+    const [name, setName] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [passwordConfirm, setPasswordConfirm] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
@@ -41,10 +42,10 @@ export const SignupMain = () => {
         const formData = new FormData();
         formData.append('email', email);
         formData.append('nickname', nickname);
+        formData.append('name', name);
         formData.append('password', password);
         formData.append('phoneNumber', phone);
         if (file) {
-            console.log(file);
             formData.append('file', file);
         }
         signUp(formData)
@@ -66,6 +67,10 @@ export const SignupMain = () => {
 
     const onChangeNickname = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setNickname(e.target.value);
+    }
+
+    const onChangeName = (e: React.ChangeEvent<HTMLInputElement>): void => {
+        setName(e.target.value);
     }
 
     const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -149,6 +154,25 @@ export const SignupMain = () => {
                         placeholder="8~16자리 / 영문 대소문자, 숫자, 특수문자 조합"
                         type="password"
                         onChange={onChangePasswordConfirm}
+                    />
+                </div>
+            </div>
+            <div
+                className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[1.562rem] max-w-full">
+                <div
+                    className="w-28 flex flex-col items-start justify-start pt-[2.187rem] px-[0rem] pb-[0rem] box-border">
+                    <div
+                        className="text-lg self-stretch relative tracking-[-0.05em] font-medium inline-block min-w-[4.563rem] z-[1] mq450:text-[1rem]">
+                        이름
+                    </div>
+                </div>
+                <div
+                    className="flex-1 rounded-3xs bg-white box-border flex flex-row items-start justify-start pt-[2.125rem] px-[2.187rem] pb-[2rem] min-w-[27.938rem] max-w-full z-[1] border-[1px] border-solid border-lightgray-100 mq750:min-w-full">
+                    <input
+                        className="w-[36.25rem] [border:none] [outline:none] font-semibold font-inter text-[1.25rem] bg-[transparent] h-[1.5rem] relative tracking-[-0.05em] text-gainsboro-200 text-left inline-block max-w-full p-0 z-[2] mq450:text-[1rem]"
+                        placeholder="이름 입력"
+                        type="text"
+                        onChange={onChangeName}
                     />
                 </div>
             </div>

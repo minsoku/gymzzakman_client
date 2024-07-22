@@ -39,10 +39,13 @@ export const NewPostPopUp = ({popUpHandler, search}: IProps) => {
         });
 
         const result = await serverNewPost(formData);
+
         if (result.success) {
-            alert('게시물이 등록되었습니다.')
+            alert('게시물이 등록되었습니다.');
             search();
             popUpHandler();
+        } else {
+            alert(result.message);
         }
     }
 

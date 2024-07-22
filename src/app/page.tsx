@@ -8,8 +8,7 @@ export default function Page() {
     const {data: session, status} = useSession();
     return (
         <div
-            className="text-[#9A9A9A] w-full h-full relative bg-whitesmoke overflow-hidden flex flex-row items-start justify-start gap-[0.625rem] leading-[normal] tracking-[normal] text-center text-[1.25rem] font-inter mq675:h-auto">
-            <div className="h-[64rem] w-[90.375rem] relative bg-whitesmoke hidden max-w-full"/>
+            className="text-[#9A9A9A] w-full h-full">
             <main
                 className="h-[68.225rem] w-full relative bg-[url('/home-background.png')] bg-cover bg-no-repeat bg-[top] shrink-0 [debug_commit:1de1738] max-w-[130%] z-[1] text-left text-[0.75rem] text-silver font-inter mq675:h-auto mq675:min-h-[1091.6]">
                 <MainButton />

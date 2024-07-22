@@ -21,19 +21,14 @@ export const serverNewPost = async (formData: FormData) => {
         if (!response.ok) {
             throw new Error(res.message);
         }
-        if (res?.success) {
-            return {success: true, message: res.message, id: res.post.id};
+
+        if (res.success) {
+            return {success: res.success, message: res.message, id: res.post.id};
         } else {
-            return {message: res.message};
+            return {success: res.success, message: res.message, statusCode: res.statusCode};
         }
     } catch (err) {
         console.error(err);
         throw new Error("INTERNAL_SERVER_ERROR");
     }
-
-    // if (shouldRedirect) {
-    //     redirect('/');
-    // }
-
-    return {message: "gd"};
 }

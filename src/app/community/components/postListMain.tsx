@@ -101,9 +101,9 @@ export const PostListMain = ({post, fetchData}: IPostData) => {
                                          alt="profile"/>
                                     <div className="ml-2 mt-3 text-lg font-bold">{item.author.nickname}</div>
                                     <div
-                                        className="ml-3 mt-4 font-light text-base text-gray-400">{dateFormatting(item.createdAt)}</div>
+                                        className="ml-3 mt-4 font-light text-base text-gray-400">{dateFormatting(item.comment_created_at)}</div>
                                 </div>
-                                <p className="ml-6">{item.content}</p>
+                                <p className="ml-6">{item.comment_content}</p>
                             </div>
                         ))
                         }

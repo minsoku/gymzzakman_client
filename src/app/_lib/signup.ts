@@ -12,7 +12,7 @@ const validateFormData = (formData: FormData, key: string)=> {
 };
 
 export const signUp = async (formData: FormData) => {
-    const fields = ['email', 'nickname', 'password'];
+    const fields = ['email', 'nickname', 'password', 'name'];
     for (const field of fields) {
         const error = validateFormData(formData, field);
         if (error) return error;
@@ -24,11 +24,18 @@ export const signUp = async (formData: FormData) => {
             body: formData,
             credentials: 'include',
         })
-        const res = await response.json();
-        if (res?.success) {
+        console.log(response);
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(`Response status: ${response.status}, Error message: ${errorData.message}`);
+          }
+        // const res = await response.json();
+
+        
+        if (response.ok) {
             shouldRedirect = true;
         } else {
-            return {message: res.message};
+            return {message: response.status};
         }
     } catch (err) {
         console.error(err);

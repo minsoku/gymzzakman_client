@@ -13,10 +13,9 @@ export interface PostData {
             profileImage: string;
             nickname: string;
         };
-        content: string;
-        createdAt: string;
-        id: number;
-        updatedAt: string;
+        comment_content: string;
+        comment_created_at: string;
+        comment_id: number;
     }[];
     author: {
         id: number;
@@ -49,8 +48,9 @@ export default function Page() {
     const fetchData = (page: number, categoryValue: string) => {
         getPaginatePost(page, categoryValue, searchText)
             .then((res) => {
+                console.log(res);
                 setTotal(res.total);
-                setData(res.data);
+                setData(res.posts);
                 setLoading(false);
             })
             .catch((err) => {

@@ -14,9 +14,9 @@ const errorCodes: IerrorCodes = {
     NO_NICKNAME: "닉네임을 입력해주세요.",
     NO_PASSWORD: "비밀번호를 입력해주세요.",
     PASSWORD_MISMATCH: "비밀번호가 일치하지 않습니다.",
-    EXIST_PHONE: "이미 등록된 전화번호입니다.",
-    EXIST_EMAIL: "이미 등록된 이메일입니다.",
-    EXIST_NICKNAME: "이미 등록된 닉네임입니다.",
+    PHONENUMBER_ALREADY_EXIST: "이미 등록된 전화번호입니다.",
+    EMAIL_ALREADY_EXIST: "이미 등록된 이메일입니다.",
+    NICKMANE_ALREADY_EXIST: "이미 등록된 닉네임입니다.",
     NO_PROFILE_IMAGE: "프로필 이미지를 등록해주세요.",
 };
 
