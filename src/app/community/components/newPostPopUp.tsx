@@ -18,8 +18,8 @@ export const NewPostPopUp = ({popUpHandler, search}: IProps) => {
     const [content, setContent] = useState<string>('');
     const [position, setPosition] = useState<Position>({latitude: '', longitude: ''});
     const [category, setCategory] = useState<string>('INFORMATION')
-    const [hashtags, setHashtags] = useState<string[]>([]);
-    const [newHashtag, setNewHashtag] = useState('');
+    // const [hashtags, setHashtags] = useState<string[]>([]);
+    // const [newHashtag, setNewHashtag] = useState('');
     const options = ['FAQ', 'AMITY', 'CERTIFICATIONS'];
 
     const postContent = async () => {
@@ -34,9 +34,9 @@ export const NewPostPopUp = ({popUpHandler, search}: IProps) => {
         formData.append("lat", position.latitude.toString());
         formData.append("lng", position.longitude.toString());
         formData.append("category", category);
-        hashtags.forEach((hashtag) => {
-            formData.append('hashtags', hashtag);
-        });
+        // hashtags.forEach((hashtag) => {
+        //     formData.append('hashtags', hashtag);
+        // });
 
         const result = await serverNewPost(formData);
 
@@ -58,24 +58,24 @@ export const NewPostPopUp = ({popUpHandler, search}: IProps) => {
     }
 
     const handleHashtagInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setNewHashtag(event.target.value);
+        // setNewHashtag(event.target.value);
     };
 
-    const handleHashtagAdd = () => {
-        if (hashtags.length >= 5) {
-            alert('해시태그는 최대 5개까지 가능합니다.');
-            return;
-        }
-        if (newHashtag.trim() !== '') {
-            setHashtags([...hashtags, newHashtag.trim()]);
-            setNewHashtag('');
-        }
-    };
-    const handleHashtagDelete = (index: number) => {
-        const updatedHashtags = [...hashtags];
-        updatedHashtags.splice(index, 1);
-        setHashtags(updatedHashtags);
-    };
+    // const handleHashtagAdd = () => {
+    //     if (hashtags.length >= 5) {
+    //         alert('해시태그는 최대 5개까지 가능합니다.');
+    //         return;
+    //     }
+    //     if (newHashtag.trim() !== '') {
+    //         setHashtags([...hashtags, newHashtag.trim()]);
+    //         setNewHashtag('');
+    //     }
+    // };
+    // const handleHashtagDelete = (index: number) => {
+    //     const updatedHashtags = [...hashtags];
+    //     updatedHashtags.splice(index, 1);
+    //     setHashtags(updatedHashtags);
+    // };
 
 
     useEffect(() => {
@@ -109,9 +109,9 @@ export const NewPostPopUp = ({popUpHandler, search}: IProps) => {
                     {session.status === "authenticated" &&
                         <div className="flex justify-between items-center">
                             <div className="flex">
-                                <img className="w-14 h-14 rounded-full" src={session?.data?.user.image}
-                                     alt={session?.data?.user.name}/>
-                                <span className="mt-1 ml-2 font-bold">{session?.data?.user.name}</span>
+                                <img className="w-14 h-14 rounded-full" src={session?.data?.user.profileImage}
+                                     alt={session?.data?.user.nickname}/>
+                                <span className="mt-1 ml-2 font-bold">{session?.data?.user.nickname}</span>
                             </div>
                             <select onChange={onChangeCategory}
                                     className="h-10 relative border-[1px] border-gray-400 right-0">
@@ -131,14 +131,14 @@ export const NewPostPopUp = ({popUpHandler, search}: IProps) => {
                         onChange={onChangeContent}/>
                     <div className="flex w-full">
                         <div className="flex mt-4">
-                            <input
+                            {/* <input
                                 type="text"
                                 className="w-36 border-[1px] border-black pl-1"
                                 placeholder="해시태그 입력"
                                 value={newHashtag}
                                 onChange={handleHashtagInput}
-                            />
-                            <button className="w-10 h-8 bg-main text-white ml-1 mr-1 rounded-lg"
+                            /> */}
+                            {/* <button className="w-10 h-8 bg-main text-white ml-1 mr-1 rounded-lg"
                                     onClick={(event) => {
                                         event.preventDefault();
                                         handleHashtagAdd();
@@ -152,7 +152,7 @@ export const NewPostPopUp = ({popUpHandler, search}: IProps) => {
                                             onClick={() => handleHashtagDelete(index)}>삭제
                                     </button>
                                 </div>
-                            ))}
+                            ))} */}
                         </div>
                         <button
                             onClick={postContent}

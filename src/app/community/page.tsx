@@ -25,12 +25,6 @@ export interface PostData {
     category: string;
     content: string;
     createdAt: string;
-    hashtags: {
-        id: number;
-        name: string;
-        createdAt: string;
-        updatedAt: string;
-    }[] | [];
     id: number;
     likeCount: number;
     title: string;
@@ -48,7 +42,6 @@ export default function Page() {
     const fetchData = (page: number, categoryValue: string) => {
         getPaginatePost(page, categoryValue, searchText)
             .then((res) => {
-                console.log(res);
                 setTotal(res.total);
                 setData(res.posts);
                 setLoading(false);

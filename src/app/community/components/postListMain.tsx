@@ -65,13 +65,13 @@ export const PostListMain = ({post, fetchData}: IPostData) => {
                 <div
                     className="ml-5 w-28 h-8 font-light bg-gray-200 rounded-lg text-center content-center">{categoryObj[post.category as keyof CategoryType]}</div>
                 <div className="ml-5 mt-5 font-light">{post.content}</div>
-                <div className="flex">
+                {/* <div className="flex">
                     {
                         post.hashtags.length > 0 && post.hashtags.map((hashtag: Hashtags, key: number) => (
                             <div key={key} className="ml-5 mt-3 font-light text-main">#{hashtag.name}</div>
                         ))
                     }
-                </div>
+                </div> */}
                 <div className="ml-5 mt-3 font-light text-gray-400">{dateFormatting(post.createdAt)}</div>
                 <button onClick={commentOpen}>
                     <div className="w-6 h-6 absolute right-8 bottom-0">
